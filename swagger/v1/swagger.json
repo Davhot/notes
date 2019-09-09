@@ -1,0 +1,113 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "API V1",
+    "version": "v1"
+  },
+  "definitions": {
+    "note": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "object",
+          "required": [
+            "body"
+          ],
+          "properties": {
+            "body": {
+              "type": "string",
+              "example": "my example note"
+            }
+          }
+        }
+      }
+    }
+  },
+  "paths": {
+    "/api/v1/categories": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "Return all the available categories"
+          }
+        },
+        "tags": [
+          "categories"
+        ],
+        "summary": "Get categories",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ]
+      },
+      "post": {
+        "responses": {
+          "201": {
+            "description": "Category created"
+          }
+        },
+        "parameters": [
+          {
+            "name": "data",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/category"
+            }
+          }
+        ],
+        "tags": [
+          "categories"
+        ],
+        "summary": "Create a new category",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ]
+      }
+    },
+    "/api/v1/categories/{id}": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "Return the selected category"
+          },
+          "404": {
+            "description": "category not found"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "type": "integer",
+            "required": true,
+            "description": "category ID"
+          },
+          {
+            "name": "data",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/category"
+            }
+          }
+        ],
+        "tags": [
+          "categories"
+        ],
+        "summary": "Get Category",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ]
+      }
+    }
+  }
+}

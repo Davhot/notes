@@ -17,6 +17,8 @@ gem 'bootsnap', '>= 1.4.2', require: false
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'rspec-rails', '~> 3.8'
+  gem 'rspec-rails-swagger'
+  gem 'factory_bot_rails'
 end
 
 group :development do
@@ -33,7 +35,8 @@ group :test do
   gem 'simplecov', require: false
   gem 'webdrivers'
   gem 'shoulda-matchers'
+  gem 'database_cleaner'
 end
 
-gem 'apipie-rails'
+gem 'grape-swagger'
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
