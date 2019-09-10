@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
@@ -16,8 +18,8 @@ gem 'bootsnap', '>= 1.4.2', require: false
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
-  gem 'rspec-rails', '~> 3.8'
   gem 'factory_bot_rails'
+  gem 'rspec-rails', '~> 3.8'
 end
 
 group :development do
@@ -29,12 +31,12 @@ end
 
 group :test do
   gem 'capybara', '>= 2.15'
+  gem 'database_cleaner'
   gem 'rails-controller-testing'
   gem 'selenium-webdriver'
+  gem 'shoulda-matchers'
   gem 'simplecov', require: false
   gem 'webdrivers'
-  gem 'shoulda-matchers'
-  gem 'database_cleaner'
 end
 
 gem 'apipie-rails'

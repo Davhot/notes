@@ -5,7 +5,7 @@ class Api::V1::NotesController < Api::V1::BaseController
   before_action :find_note, only: %i[show update destroy]
 
   def_param_group :note do
-    param :note, Hash, desc: "Информация о заметке" do
+    param :note, Hash, desc: 'Информация о заметке' do
       param :body, String, desc: 'тело заметки', required: true
       param :category_id, String, desc: 'категория', required: true
     end

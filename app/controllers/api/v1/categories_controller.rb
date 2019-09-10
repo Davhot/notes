@@ -5,7 +5,7 @@ class Api::V1::CategoriesController < Api::V1::BaseController
   before_action :find_category, only: %i[show update destroy]
 
   def_param_group :category do
-    param :category, Hash, desc: "Информация о категории" do
+    param :category, Hash, desc: 'Информация о категории' do
       param :name, String, desc: 'название', required: true
       param :color, String, desc: 'цвет', required: true
     end

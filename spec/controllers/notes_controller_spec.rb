@@ -33,6 +33,11 @@ RSpec.describe Api::V1::NotesController, type: :controller do
       expect(data).to match_array(expect_fields)
       expect(data.size).to eq(5)
     end
+
+    it 'check not found' do
+      get :show, params: { id: 0 }
+      expect(response).to have_http_status(404)
+    end
   end
 
   describe 'Get #index' do
