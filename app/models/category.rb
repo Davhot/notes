@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# Модель категорий
 class Category < ApplicationRecord
   has_many :notes
 

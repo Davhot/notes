@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# Модель заметок
 class Note < ApplicationRecord
   belongs_to :category
 
