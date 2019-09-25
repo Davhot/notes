@@ -2,10 +2,10 @@
 
 # Базовый контроллер
 class Api::V1::CategoriesController < ApplicationController
-  before_action :find_category, only: %i[show update]
+  before_action :find_category, only: %i[show update destroy]
 
   def index
-    response = Category.all
+    response = Category.all # TODO: через jbuilder передавать id, name, color
 
     render json: response, status: :ok
   end
@@ -20,15 +20,21 @@ class Api::V1::CategoriesController < ApplicationController
   end
 
   def update
-    @category.update(contact_params)
+    @category.update(category_params)
 
-    render :nothing, status: :ok
+    head 204
+  end
+
+  def destroy
+    @category.destroy
+
+    head 204
   end
 
   private
 
   def category_params
-    params.require(:data).permit(:name, :color)
+    params.require(:category).permit(:name, :color)
   end
 
   def find_category

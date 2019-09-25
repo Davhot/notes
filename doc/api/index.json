@@ -1,0 +1,45 @@
+{
+  "resources": [
+    {
+      "name": "Categories",
+      "explanation": "Категории",
+      "examples": [
+        {
+          "description": "Creating an category",
+          "link": "categories/creating_an_category.json",
+          "groups": "all",
+          "route": "/api/v1/categories",
+          "method": "post"
+        },
+        {
+          "description": "Deleting an category",
+          "link": "categories/deleting_an_category.json",
+          "groups": "all",
+          "route": "/api/v1/categories/:id",
+          "method": "delete"
+        },
+        {
+          "description": "Get category",
+          "link": "categories/get_category.json",
+          "groups": "all",
+          "route": "/api/v1/categories/:id",
+          "method": "get"
+        },
+        {
+          "description": "List categories",
+          "link": "categories/list_categories.json",
+          "groups": "all",
+          "route": "/api/v1/categories",
+          "method": "get"
+        },
+        {
+          "description": "Updating an category",
+          "link": "categories/updating_an_category.json",
+          "groups": "all",
+          "route": "/api/v1/categories/:id",
+          "method": "put"
+        }
+      ]
+    }
+  ]
+}

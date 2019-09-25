@@ -1,0 +1,64 @@
+{
+  "resource": "Categories",
+  "resource_explanation": "Категории",
+  "http_method": "POST",
+  "route": "/api/v1/categories",
+  "description": "Creating an category",
+  "explanation": "First, create an category, then make a later request to get it back",
+  "parameters": [
+    {
+      "scope": "category",
+      "with_example": true,
+      "type": "string",
+      "required": true,
+      "name": "name",
+      "description": "Название"
+    },
+    {
+      "scope": "category",
+      "with_example": true,
+      "type": "string",
+      "required": true,
+      "name": "color",
+      "description": "Цвет"
+    }
+  ],
+  "response_fields": [
+
+  ],
+  "requests": [
+    {
+      "request_method": "POST",
+      "request_path": "/api/v1/categories",
+      "request_body": "{\"category\":{\"name\":\"Category 1\",\"color\":\"#ffffff\"}}",
+      "request_headers": {
+        "Accept": "application/json",
+        "Content-Type": "application/json",
+        "Host": "example.org",
+        "Cookie": ""
+      },
+      "request_query_parameters": {
+      },
+      "request_content_type": "application/json",
+      "response_status": 201,
+      "response_status_text": "Created",
+      "response_body": "{\n  \"id\": 1,\n  \"name\": \"Category 1\",\n  \"color\": \"#ffffff\",\n  \"created_at\": \"2019-09-25T21:45:11.858Z\",\n  \"updated_at\": \"2019-09-25T21:45:11.858Z\"\n}",
+      "response_headers": {
+        "X-Frame-Options": "SAMEORIGIN",
+        "X-XSS-Protection": "1; mode=block",
+        "X-Content-Type-Options": "nosniff",
+        "X-Download-Options": "noopen",
+        "X-Permitted-Cross-Domain-Policies": "none",
+        "Referrer-Policy": "strict-origin-when-cross-origin",
+        "Content-Type": "application/json; charset=utf-8",
+        "ETag": "W/\"86e2494fa8762af82b21676b5c6919f5\"",
+        "Cache-Control": "max-age=0, private, must-revalidate",
+        "X-Request-Id": "981530f2-a97d-447a-a49b-ea43664eb56a",
+        "X-Runtime": "0.003905",
+        "Content-Length": "126"
+      },
+      "response_content_type": "application/json; charset=utf-8",
+      "curl": null
+    }
+  ]
+}

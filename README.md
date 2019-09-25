@@ -1,5 +1,5 @@
 # README
 
 ```ruby
-$ rake swagger
+$ rake docs:generate
 ```

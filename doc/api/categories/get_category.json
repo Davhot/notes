@@ -1,0 +1,63 @@
+{
+  "resource": "Categories",
+  "resource_explanation": "Категории",
+  "http_method": "GET",
+  "route": "/api/v1/categories/:id",
+  "description": "Get category",
+  "explanation": null,
+  "parameters": [
+
+  ],
+  "response_fields": [
+    {
+      "type": "integer",
+      "name": "id",
+      "description": " id"
+    },
+    {
+      "type": "string",
+      "name": "name",
+      "description": "Название"
+    },
+    {
+      "type": "string",
+      "name": "color",
+      "description": "Цвет"
+    }
+  ],
+  "requests": [
+    {
+      "request_method": "GET",
+      "request_path": "/api/v1/categories/1",
+      "request_body": null,
+      "request_headers": {
+        "Accept": "application/json",
+        "Content-Type": "application/json",
+        "Host": "example.org",
+        "Cookie": ""
+      },
+      "request_query_parameters": {
+      },
+      "request_content_type": "application/json",
+      "response_status": 200,
+      "response_status_text": "OK",
+      "response_body": "{\n  \"id\": 1,\n  \"name\": \"New category 3\",\n  \"color\": \"#ffffff\",\n  \"created_at\": \"2019-09-25T21:45:11.847Z\",\n  \"updated_at\": \"2019-09-25T21:45:11.847Z\"\n}",
+      "response_headers": {
+        "X-Frame-Options": "SAMEORIGIN",
+        "X-XSS-Protection": "1; mode=block",
+        "X-Content-Type-Options": "nosniff",
+        "X-Download-Options": "noopen",
+        "X-Permitted-Cross-Domain-Policies": "none",
+        "Referrer-Policy": "strict-origin-when-cross-origin",
+        "Content-Type": "application/json; charset=utf-8",
+        "ETag": "W/\"9716187f4ac23ebca0dbdcb2a8a2ce9d\"",
+        "Cache-Control": "max-age=0, private, must-revalidate",
+        "X-Request-Id": "9ea5dfe1-9d52-49b4-a446-dc0f6ff738e2",
+        "X-Runtime": "0.003885",
+        "Content-Length": "130"
+      },
+      "response_content_type": "application/json; charset=utf-8",
+      "curl": null
+    }
+  ]
+}
