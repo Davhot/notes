@@ -37,7 +37,7 @@ RSpec.configure do |config|
       example.run
     end
   end
-  config.backtrace_inclusion_patterns = [%r{app|spec}]
+  config.backtrace_inclusion_patterns = [/app|spec/]
 end
 
 Shoulda::Matchers.configure do |config|
