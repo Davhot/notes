@@ -1,12 +1,17 @@
 {
-  "resource": "Categories",
+  "resource": "Notes",
   "resource_explanation": "Категории",
   "http_method": "GET",
-  "route": "/api/v1/categories/:id",
-  "description": "Get category",
+  "route": "/api/v1/categories/:category_id/notes",
+  "description": "INDEX",
   "explanation": null,
   "parameters": [
-
+    {
+      "type": "integer",
+      "required": true,
+      "name": "category_id",
+      "description": "id категории"
+    }
   ],
   "response_fields": [
     {
@@ -16,19 +21,19 @@
     },
     {
       "type": "string",
-      "name": "name",
-      "description": "Название"
+      "name": "body",
+      "description": "Тело заметки"
     },
     {
-      "type": "string",
-      "name": "color",
-      "description": "Цвет"
+      "type": "integer",
+      "name": "category_id",
+      "description": "id категории"
     }
   ],
   "requests": [
     {
       "request_method": "GET",
-      "request_path": "/api/v1/categories/1",
+      "request_path": "/api/v1/categories/3/notes",
       "request_body": null,
       "request_headers": {
         "Accept": "application/json",
@@ -41,7 +46,7 @@
       "request_content_type": "application/json",
       "response_status": 200,
       "response_status_text": "OK",
-      "response_body": "{\n  \"id\": 1,\n  \"name\": \"New category 3\",\n  \"color\": \"#ffffff\",\n  \"created_at\": \"2019-09-25T21:45:11.847Z\",\n  \"updated_at\": \"2019-09-25T21:45:11.847Z\"\n}",
+      "response_body": "{\n  \"data\": [\n    {\n      \"id\": 1,\n      \"body\": \"New note 1\",\n      \"category_id\": 3\n    },\n    {\n      \"id\": 2,\n      \"body\": \"New note 2\",\n      \"category_id\": 3\n    }\n  ]\n}",
       "response_headers": {
         "X-Frame-Options": "SAMEORIGIN",
         "X-XSS-Protection": "1; mode=block",
@@ -50,11 +55,11 @@
         "X-Permitted-Cross-Domain-Policies": "none",
         "Referrer-Policy": "strict-origin-when-cross-origin",
         "Content-Type": "application/json; charset=utf-8",
-        "ETag": "W/\"9716187f4ac23ebca0dbdcb2a8a2ce9d\"",
+        "ETag": "W/\"9ef89773dd743ff634a73179ac16869a\"",
         "Cache-Control": "max-age=0, private, must-revalidate",
-        "X-Request-Id": "9ea5dfe1-9d52-49b4-a446-dc0f6ff738e2",
-        "X-Runtime": "0.003885",
-        "Content-Length": "130"
+        "X-Request-Id": "b941c648-01cf-40ea-b5a6-a47237ff54ad",
+        "X-Runtime": "0.009676",
+        "Content-Length": "100"
       },
       "response_content_type": "application/json; charset=utf-8",
       "curl": null

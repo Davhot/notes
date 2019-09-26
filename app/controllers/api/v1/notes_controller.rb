@@ -1,32 +1,34 @@
 # frozen_string_literal: true
 
-# Базовый контроллер
+# Контроллер заметок
 class Api::V1::NotesController < Api::V1::BaseController
   before_action :find_note, only: %i[show update destroy]
+  before_action :find_category, only: %i[index create]
 
   def index
-    response = Note.all
-
-    render json: { notes: response }, status: :ok
+    @notes = @category.notes
+    render 'index.json', status: :ok
   end
 
   def create
-    response = Note.create(note_params)
+    response = @category.notes.create(note_params)
     render json: response, status: :created
   end
 
   def show
-    render json: @note, status: :ok
+    render 'show.json', status: :ok
   end
 
   def update
     @note.update(note_params)
-    render_nothing
+
+    head 204
   end
 
   def destroy
     @note.destroy
-    render_nothing
+
+    head 204
   end
 
   private
@@ -35,8 +37,12 @@ class Api::V1::NotesController < Api::V1::BaseController
     params.require(:note).permit(:body, :category_id)
   end
 
+  def find_category
+    @category = Category.find(params[:category_id])
+  end
+
   def find_note
     @note = Note.find_by(id: params[:id])
-    render_not_found unless @note
+    render json: { error: :not_found }, status: 404 unless @note
   end
 end

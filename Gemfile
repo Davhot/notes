@@ -5,7 +5,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.1'
 
-gem 'jbuilder', '~> 2.7'
+gem 'jbuilder', github: 'rails/jbuilder'
 gem 'puma', '~> 3.11'
 gem 'rails', '~> 6.0.0'
 gem 'react-rails'

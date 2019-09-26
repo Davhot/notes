@@ -3,7 +3,7 @@
   "resource_explanation": "Категории",
   "http_method": "GET",
   "route": "/api/v1/categories",
-  "description": "List categories",
+  "description": "INDEX",
   "explanation": null,
   "parameters": [
 
@@ -41,7 +41,7 @@
       "request_content_type": "application/json",
       "response_status": 200,
       "response_status_text": "OK",
-      "response_body": "[\n  {\n    \"id\": 1,\n    \"name\": \"New category 1\",\n    \"color\": \"#ffffff\",\n    \"created_at\": \"2019-09-25T21:45:11.822Z\",\n    \"updated_at\": \"2019-09-25T21:45:11.822Z\"\n  },\n  {\n    \"id\": 2,\n    \"name\": \"New category 2\",\n    \"color\": \"#ffffff\",\n    \"created_at\": \"2019-09-25T21:45:11.826Z\",\n    \"updated_at\": \"2019-09-25T21:45:11.826Z\"\n  }\n]",
+      "response_body": "{\n  \"data\": [\n    {\n      \"id\": 1,\n      \"name\": \"New category 1\",\n      \"color\": \"#ffffff\"\n    },\n    {\n      \"id\": 2,\n      \"name\": \"New category 2\",\n      \"color\": \"#ffffff\"\n    }\n  ]\n}",
       "response_headers": {
         "X-Frame-Options": "SAMEORIGIN",
         "X-XSS-Protection": "1; mode=block",
@@ -50,11 +50,11 @@
         "X-Permitted-Cross-Domain-Policies": "none",
         "Referrer-Policy": "strict-origin-when-cross-origin",
         "Content-Type": "application/json; charset=utf-8",
-        "ETag": "W/\"6e6429eeb0f38702955cbe4f40c35194\"",
+        "ETag": "W/\"b1a64c76d0c16f79c52aa94b1586f864\"",
         "Cache-Control": "max-age=0, private, must-revalidate",
-        "X-Request-Id": "de19cce3-d068-467d-b48c-2598dd1052ee",
-        "X-Runtime": "0.010629",
-        "Content-Length": "263"
+        "X-Request-Id": "b9756ab6-9f17-402d-894e-a0482d5a2c4c",
+        "X-Runtime": "0.014059",
+        "Content-Length": "112"
       },
       "response_content_type": "application/json; charset=utf-8",
       "curl": null

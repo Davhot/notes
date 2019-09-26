@@ -1,0 +1,63 @@
+{
+  "resource": "Notes",
+  "resource_explanation": "Категории",
+  "http_method": "GET",
+  "route": "/api/v1/notes/:id",
+  "description": "SHOW",
+  "explanation": null,
+  "parameters": [
+
+  ],
+  "response_fields": [
+    {
+      "type": "integer",
+      "name": "id",
+      "description": " id"
+    },
+    {
+      "type": "string",
+      "name": "body",
+      "description": "Тело заметки"
+    },
+    {
+      "type": "integer",
+      "name": "category_id",
+      "description": "id категории"
+    }
+  ],
+  "requests": [
+    {
+      "request_method": "GET",
+      "request_path": "/api/v1/notes/1",
+      "request_body": null,
+      "request_headers": {
+        "Accept": "application/json",
+        "Content-Type": "application/json",
+        "Host": "example.org",
+        "Cookie": ""
+      },
+      "request_query_parameters": {
+      },
+      "request_content_type": "application/json",
+      "response_status": 200,
+      "response_status_text": "OK",
+      "response_body": "{\n  \"id\": 1,\n  \"body\": \"New note 3\",\n  \"category_id\": 1\n}",
+      "response_headers": {
+        "X-Frame-Options": "SAMEORIGIN",
+        "X-XSS-Protection": "1; mode=block",
+        "X-Content-Type-Options": "nosniff",
+        "X-Download-Options": "noopen",
+        "X-Permitted-Cross-Domain-Policies": "none",
+        "Referrer-Policy": "strict-origin-when-cross-origin",
+        "Content-Type": "application/json; charset=utf-8",
+        "ETag": "W/\"c99e03cfb5b6a46a3dc9c87a105d6a0c\"",
+        "Cache-Control": "max-age=0, private, must-revalidate",
+        "X-Request-Id": "4d2d7d8e-3ebc-490f-8d9b-07ee081c59c0",
+        "X-Runtime": "0.004044",
+        "Content-Length": "44"
+      },
+      "response_content_type": "application/json; charset=utf-8",
+      "curl": null
+    }
+  ]
+}

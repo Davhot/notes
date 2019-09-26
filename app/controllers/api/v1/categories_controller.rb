@@ -1,13 +1,12 @@
 # frozen_string_literal: true
 
-# Базовый контроллер
-class Api::V1::CategoriesController < ApplicationController
+# Контроллер категорий
+class Api::V1::CategoriesController < Api::V1::BaseController
   before_action :find_category, only: %i[show update destroy]
 
   def index
-    response = Category.all # TODO: через jbuilder передавать id, name, color
-
-    render json: response, status: :ok
+    @categories = Category.all
+    render 'index.json', status: :ok
   end
 
   def create
@@ -16,7 +15,7 @@ class Api::V1::CategoriesController < ApplicationController
   end
 
   def show
-    render json: @category, status: :ok
+    render 'show.json', status: :ok
   end
 
   def update

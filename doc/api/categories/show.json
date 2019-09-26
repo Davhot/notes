@@ -1,19 +1,33 @@
 {
   "resource": "Categories",
   "resource_explanation": "Категории",
-  "http_method": "DELETE",
+  "http_method": "GET",
   "route": "/api/v1/categories/:id",
-  "description": "Deleting an category",
+  "description": "SHOW",
   "explanation": null,
   "parameters": [
 
   ],
   "response_fields": [
-
+    {
+      "type": "integer",
+      "name": "id",
+      "description": " id"
+    },
+    {
+      "type": "string",
+      "name": "name",
+      "description": "Название"
+    },
+    {
+      "type": "string",
+      "name": "color",
+      "description": "Цвет"
+    }
   ],
   "requests": [
     {
-      "request_method": "DELETE",
+      "request_method": "GET",
       "request_path": "/api/v1/categories/1",
       "request_body": null,
       "request_headers": {
@@ -25,9 +39,9 @@
       "request_query_parameters": {
       },
       "request_content_type": "application/json",
-      "response_status": 204,
-      "response_status_text": "No Content",
-      "response_body": null,
+      "response_status": 200,
+      "response_status_text": "OK",
+      "response_body": "{\n  \"id\": 1,\n  \"name\": \"New category 3\",\n  \"color\": \"#ffffff\"\n}",
       "response_headers": {
         "X-Frame-Options": "SAMEORIGIN",
         "X-XSS-Protection": "1; mode=block",
@@ -35,11 +49,14 @@
         "X-Download-Options": "noopen",
         "X-Permitted-Cross-Domain-Policies": "none",
         "Referrer-Policy": "strict-origin-when-cross-origin",
-        "Cache-Control": "no-cache",
-        "X-Request-Id": "005a1a5c-360a-4dad-932c-e1c6ad2f80ed",
-        "X-Runtime": "0.003058"
+        "Content-Type": "application/json; charset=utf-8",
+        "ETag": "W/\"a6898d00287f70238d35f57739a9dd1e\"",
+        "Cache-Control": "max-age=0, private, must-revalidate",
+        "X-Request-Id": "27eff1c2-9b84-4c86-873b-e58b802fb8ce",
+        "X-Runtime": "0.004239",
+        "Content-Length": "50"
       },
-      "response_content_type": null,
+      "response_content_type": "application/json; charset=utf-8",
       "curl": null
     }
   ]

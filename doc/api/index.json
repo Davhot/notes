@@ -5,38 +5,79 @@
       "explanation": "Категории",
       "examples": [
         {
-          "description": "Creating an category",
-          "link": "categories/creating_an_category.json",
+          "description": "CREATE",
+          "link": "categories/create.json",
           "groups": "all",
           "route": "/api/v1/categories",
           "method": "post"
         },
         {
-          "description": "Deleting an category",
-          "link": "categories/deleting_an_category.json",
+          "description": "DELETE",
+          "link": "categories/delete.json",
           "groups": "all",
           "route": "/api/v1/categories/:id",
           "method": "delete"
         },
         {
-          "description": "Get category",
-          "link": "categories/get_category.json",
-          "groups": "all",
-          "route": "/api/v1/categories/:id",
-          "method": "get"
-        },
-        {
-          "description": "List categories",
-          "link": "categories/list_categories.json",
+          "description": "INDEX",
+          "link": "categories/index.json",
           "groups": "all",
           "route": "/api/v1/categories",
           "method": "get"
         },
         {
-          "description": "Updating an category",
-          "link": "categories/updating_an_category.json",
+          "description": "SHOW",
+          "link": "categories/show.json",
           "groups": "all",
           "route": "/api/v1/categories/:id",
+          "method": "get"
+        },
+        {
+          "description": "UPDATE",
+          "link": "categories/update.json",
+          "groups": "all",
+          "route": "/api/v1/categories/:id",
+          "method": "put"
+        }
+      ]
+    },
+    {
+      "name": "Notes",
+      "explanation": "Категории",
+      "examples": [
+        {
+          "description": "CREATE",
+          "link": "notes/create.json",
+          "groups": "all",
+          "route": "/api/v1/categories/:category_id/notes",
+          "method": "post"
+        },
+        {
+          "description": "DELETE",
+          "link": "notes/delete.json",
+          "groups": "all",
+          "route": "/api/v1/notes/:id",
+          "method": "delete"
+        },
+        {
+          "description": "INDEX",
+          "link": "notes/index.json",
+          "groups": "all",
+          "route": "/api/v1/categories/:category_id/notes",
+          "method": "get"
+        },
+        {
+          "description": "SHOW",
+          "link": "notes/show.json",
+          "groups": "all",
+          "route": "/api/v1/notes/:id",
+          "method": "get"
+        },
+        {
+          "description": "UPDATE",
+          "link": "notes/update.json",
+          "groups": "all",
+          "route": "/api/v1/notes/:id",
           "method": "put"
         }
       ]

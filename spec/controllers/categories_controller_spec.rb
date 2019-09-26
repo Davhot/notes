@@ -3,6 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe Api::V1::CategoriesController, type: :controller do
+  render_views
   include ApiHelper
 
   let(:category) { create :category }
@@ -26,27 +27,38 @@ RSpec.describe Api::V1::CategoriesController, type: :controller do
     end
 
     it 'check format' do
-      get :show, params: { id: category.id }
+      get :show, params: { id: category.id, format: :json }
       data = body.keys
-      expect_fields = %w[id name color created_at updated_at]
+      expect_fields = %w[id name color]
       expect(data).to match_array(expect_fields)
-      expect(data.size).to eq(5)
+      expect(data.size).to eq(3)
     end
   end
 
   describe 'Get #index' do
     it 'render status 200' do
-      get :index
+      get :index, format: :json
       expect(response).to have_http_status(:success)
     end
 
     it 'render all categories' do
       2.times { create :category }
 
-      get :index
+      get :index, format: :json
 
-      data = body['categories']
+      data = body['data']
       expect(data.size).to eq(2)
+    end
+
+    it 'check format' do
+      2.times { create :category }
+
+      get :index, format: :json
+
+      data = body['data'][0].keys
+      expect_fields = %w[id name color]
+      expect(data).to match_array(expect_fields)
+      expect(data.size).to eq(3)
     end
   end
 

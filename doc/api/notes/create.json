@@ -1,26 +1,34 @@
 {
-  "resource": "Categories",
+  "resource": "Notes",
   "resource_explanation": "Категории",
   "http_method": "POST",
-  "route": "/api/v1/categories",
-  "description": "Creating an category",
-  "explanation": "First, create an category, then make a later request to get it back",
+  "route": "/api/v1/categories/:category_id/notes",
+  "description": "CREATE",
+  "explanation": "First, create an note, then make a later request to get it back",
   "parameters": [
     {
-      "scope": "category",
-      "with_example": true,
-      "type": "string",
+      "type": "integer",
       "required": true,
-      "name": "name",
-      "description": "Название"
+      "name": "category_id",
+      "description": "id категории"
     },
     {
-      "scope": "category",
-      "with_example": true,
       "type": "string",
       "required": true,
-      "name": "color",
-      "description": "Цвет"
+      "name": "id",
+      "description": " id"
+    },
+    {
+      "type": "string",
+      "required": true,
+      "name": "body",
+      "description": "Тело заметки"
+    },
+    {
+      "type": "string",
+      "required": true,
+      "name": "category_id",
+      "description": "id категории"
     }
   ],
   "response_fields": [
@@ -29,8 +37,8 @@
   "requests": [
     {
       "request_method": "POST",
-      "request_path": "/api/v1/categories",
-      "request_body": "{\"category\":{\"name\":\"Category 1\",\"color\":\"#ffffff\"}}",
+      "request_path": "/api/v1/categories/1/notes",
+      "request_body": "{\"body\":\"Note 1\"}",
       "request_headers": {
         "Accept": "application/json",
         "Content-Type": "application/json",
@@ -42,7 +50,7 @@
       "request_content_type": "application/json",
       "response_status": 201,
       "response_status_text": "Created",
-      "response_body": "{\n  \"id\": 1,\n  \"name\": \"Category 1\",\n  \"color\": \"#ffffff\",\n  \"created_at\": \"2019-09-25T21:45:11.858Z\",\n  \"updated_at\": \"2019-09-25T21:45:11.858Z\"\n}",
+      "response_body": "{\n  \"id\": 1,\n  \"body\": \"Note 1\",\n  \"category_id\": 1,\n  \"created_at\": \"2019-09-26T19:47:26.447Z\",\n  \"updated_at\": \"2019-09-26T19:47:26.447Z\"\n}",
       "response_headers": {
         "X-Frame-Options": "SAMEORIGIN",
         "X-XSS-Protection": "1; mode=block",
@@ -51,11 +59,11 @@
         "X-Permitted-Cross-Domain-Policies": "none",
         "Referrer-Policy": "strict-origin-when-cross-origin",
         "Content-Type": "application/json; charset=utf-8",
-        "ETag": "W/\"86e2494fa8762af82b21676b5c6919f5\"",
+        "ETag": "W/\"08a285ca3b6c354a2ab8ec8b06ba9e91\"",
         "Cache-Control": "max-age=0, private, must-revalidate",
-        "X-Request-Id": "981530f2-a97d-447a-a49b-ea43664eb56a",
-        "X-Runtime": "0.003905",
-        "Content-Length": "126"
+        "X-Request-Id": "59bd0c78-c047-42fa-b250-8546960bcb63",
+        "X-Runtime": "0.004272",
+        "Content-Length": "120"
       },
       "response_content_type": "application/json; charset=utf-8",
       "curl": null

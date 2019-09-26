@@ -3,19 +3,20 @@
 require 'rails_helper'
 
 RSpec.describe Api::V1::NotesController, type: :controller do
+  render_views
   include ApiHelper
 
   let(:category) { create :category }
   let(:note) { create :note }
 
   describe 'POST create' do
-    it 'render status 200' do
-      post :create, params: { note: { body: 'Заметка 1', category_id: category.id } }
+    it 'render status 201' do
+      post :create, params: { note: { body: 'Заметка 1' }, category_id: category.id }
       expect(response).to have_http_status(:success)
     end
 
     it 'check create' do
-      post :create, params: { note: { body: 'Заметка 1', category_id: category.id } }
+      post :create, params: { note: { body: 'Заметка 1' }, category_id: category.id }
       expect(Note.count).to eq(1)
     end
   end
@@ -29,9 +30,9 @@ RSpec.describe Api::V1::NotesController, type: :controller do
     it 'check format' do
       get :show, params: { id: note.id }
       data = body.keys
-      expect_fields = %w[id body category_id created_at updated_at]
+      expect_fields = %w[id body category_id]
       expect(data).to match_array(expect_fields)
-      expect(data.size).to eq(5)
+      expect(data.size).to eq(3)
     end
 
     it 'check not found' do
@@ -42,17 +43,30 @@ RSpec.describe Api::V1::NotesController, type: :controller do
 
   describe 'Get #index' do
     it 'render status 200' do
-      get :index
+      get :index, params: { category_id: category.id }
       expect(response).to have_http_status(:success)
     end
 
     it 'render all notes' do
       2.times { create :note }
+      Note.update_all(category_id: category.id)
 
-      get :index
+      get :index, params: { category_id: category.id }
 
-      data = body['notes']
+      data = body['data']
       expect(data.size).to eq(2)
+    end
+
+    it 'check format' do
+      2.times { create :note }
+      Note.update_all(category_id: category.id)
+
+      get :index, params: { category_id: category.id }
+
+      data = body['data'][0].keys
+      expect_fields = %w[id body category_id]
+      expect(data).to match_array(expect_fields)
+      expect(data.size).to eq(3)
     end
   end
 
@@ -63,10 +77,13 @@ RSpec.describe Api::V1::NotesController, type: :controller do
     end
 
     it 'check update category' do
-      put :update, params: { id: note.id, note: { body: 'Заметка 2', category_id: category.id } }
+      new_note = note
+      note_category_id = category.id
+      put :update, params: { id: new_note.id, note: { body: 'Заметка 2', category_id: note_category_id } }
+      new_note.reload
 
-      expect(Note.last.body).to eq('Заметка 2')
-      expect(Note.last.category_id).to eq(category.id)
+      expect(new_note.body).to eq('Заметка 2')
+      expect(new_note.category_id).to eq(note_category_id)
     end
   end
 

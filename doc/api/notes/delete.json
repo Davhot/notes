@@ -1,0 +1,46 @@
+{
+  "resource": "Notes",
+  "resource_explanation": "Категории",
+  "http_method": "DELETE",
+  "route": "/api/v1/notes/:id",
+  "description": "DELETE",
+  "explanation": null,
+  "parameters": [
+
+  ],
+  "response_fields": [
+
+  ],
+  "requests": [
+    {
+      "request_method": "DELETE",
+      "request_path": "/api/v1/notes/1",
+      "request_body": null,
+      "request_headers": {
+        "Accept": "application/json",
+        "Content-Type": "application/json",
+        "Host": "example.org",
+        "Cookie": ""
+      },
+      "request_query_parameters": {
+      },
+      "request_content_type": "application/json",
+      "response_status": 204,
+      "response_status_text": "No Content",
+      "response_body": null,
+      "response_headers": {
+        "X-Frame-Options": "SAMEORIGIN",
+        "X-XSS-Protection": "1; mode=block",
+        "X-Content-Type-Options": "nosniff",
+        "X-Download-Options": "noopen",
+        "X-Permitted-Cross-Domain-Policies": "none",
+        "Referrer-Policy": "strict-origin-when-cross-origin",
+        "Cache-Control": "no-cache",
+        "X-Request-Id": "c3f6498f-5449-401e-9915-e87fb4625c53",
+        "X-Runtime": "0.002984"
+      },
+      "response_content_type": null,
+      "curl": null
+    }
+  ]
+}

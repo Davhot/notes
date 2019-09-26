@@ -1,0 +1,61 @@
+{
+  "resource": "Notes",
+  "resource_explanation": "Категории",
+  "http_method": "PUT",
+  "route": "/api/v1/notes/:id",
+  "description": "UPDATE",
+  "explanation": null,
+  "parameters": [
+    {
+      "scope": "note",
+      "with_example": true,
+      "type": "string",
+      "required": true,
+      "name": "body",
+      "description": "Тело заметки"
+    },
+    {
+      "scope": "note",
+      "with_example": true,
+      "type": "string",
+      "required": true,
+      "name": "category_id",
+      "description": "id категории"
+    }
+  ],
+  "response_fields": [
+
+  ],
+  "requests": [
+    {
+      "request_method": "PUT",
+      "request_path": "/api/v1/notes/1",
+      "request_body": "{\"note\":{\"body\":\"Note 1\",\"category_id\":2}}",
+      "request_headers": {
+        "Accept": "application/json",
+        "Content-Type": "application/json",
+        "Host": "example.org",
+        "Cookie": ""
+      },
+      "request_query_parameters": {
+      },
+      "request_content_type": "application/json",
+      "response_status": 204,
+      "response_status_text": "No Content",
+      "response_body": null,
+      "response_headers": {
+        "X-Frame-Options": "SAMEORIGIN",
+        "X-XSS-Protection": "1; mode=block",
+        "X-Content-Type-Options": "nosniff",
+        "X-Download-Options": "noopen",
+        "X-Permitted-Cross-Domain-Policies": "none",
+        "Referrer-Policy": "strict-origin-when-cross-origin",
+        "Cache-Control": "no-cache",
+        "X-Request-Id": "7a98d4fd-b94a-4585-83ce-bc0100f5302e",
+        "X-Runtime": "0.005935"
+      },
+      "response_content_type": null,
+      "curl": null
+    }
+  ]
+}

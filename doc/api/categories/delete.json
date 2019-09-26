@@ -1,36 +1,21 @@
 {
   "resource": "Categories",
   "resource_explanation": "Категории",
-  "http_method": "PUT",
+  "http_method": "DELETE",
   "route": "/api/v1/categories/:id",
-  "description": "Updating an category",
+  "description": "DELETE",
   "explanation": null,
   "parameters": [
-    {
-      "scope": "category",
-      "with_example": true,
-      "type": "string",
-      "required": true,
-      "name": "name",
-      "description": "Название"
-    },
-    {
-      "scope": "category",
-      "with_example": true,
-      "type": "string",
-      "required": true,
-      "name": "color",
-      "description": "Цвет"
-    }
+
   ],
   "response_fields": [
 
   ],
   "requests": [
     {
-      "request_method": "PUT",
+      "request_method": "DELETE",
       "request_path": "/api/v1/categories/1",
-      "request_body": "{\"category\":{\"name\":\"Category 2\",\"color\":\"#ffffff\"}}",
+      "request_body": null,
       "request_headers": {
         "Accept": "application/json",
         "Content-Type": "application/json",
@@ -51,8 +36,8 @@
         "X-Permitted-Cross-Domain-Policies": "none",
         "Referrer-Policy": "strict-origin-when-cross-origin",
         "Cache-Control": "no-cache",
-        "X-Request-Id": "ee04244b-4254-45f0-b537-15bd57481797",
-        "X-Runtime": "0.003710"
+        "X-Request-Id": "8212b168-b8d3-4aa8-941a-8baadb4fd652",
+        "X-Runtime": "0.003075"
       },
       "response_content_type": null,
       "curl": null
