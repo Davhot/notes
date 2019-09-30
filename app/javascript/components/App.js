@@ -1,27 +1,25 @@
 import React from 'react'
 
-import Nav from './components/Nav';
+import { BrowserRouter, Switch, Route } from 'react-router-dom'
+
+import { Provider } from 'react-redux'
+
+import HelloWorld from './HelloWorld'
+
+import configureStore from '../configureStore'
+const store = configureStore()
 
 class App extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      showNote: false
-    };
-  }
-
-  toggleNote = () => {
-    this.setState({
-      showNote: !this.state.showNote,
-      note: {}
-    })
-  }
-
-  render() {
+  render () {
     return (
-      <React.Fragment>
-        <Nav toggleNote={this.toggleNote} showNote={showNote} />
-      </React.Fragment>
+      <Provider store={store}>
+        <BrowserRouter>
+          <Switch>
+            <Route exact path="/" render={() => ("Home!")} />
+            <Route path="/hello" render={() => <HelloWorld greeting="David"/>} />
+          </Switch>
+        </BrowserRouter>
+      </Provider>
     )
   }
 }

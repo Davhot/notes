@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  root 'static#index'
   namespace :api, constraints: { format: 'json' } do
     namespace :v1 do
       resources :categories, shallow: true, except: %w[new edit] do
@@ -9,8 +10,7 @@ Rails.application.routes.draw do
     end
   end
 
-  # get '*page', to: 'static#index', constraints: ->(req) do
-  #   !req.xhr? && req.format.html?
-  # end
-  root 'static#index'
+  get '*page', to: 'static#index', constraints: ->(req) do
+    !req.xhr? && req.format.html?
+  end
 end

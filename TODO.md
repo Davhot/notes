@@ -7,13 +7,7 @@
 6. mocha
 
 План
-1. Доделать API
-a. Rspec
-b. Rubocop
-c. Docs
-d. Notes refactoring API
-1. like rails-react-tutorial
-  - https://www.freecodecamp.org/news/how-to-create-a-rails-project-with-a-react-and-redux-front-end-8b01e17a1db
-  - https://github.com/jwmunn/notes-react-app
-+ 2. Back Rails with notes and categories
-3. Front
+1. Макет Figma
+2. HTML + CSS
+3. Перенести статику в проект
+4. Закодить на React
