@@ -23,7 +23,7 @@ export function getCategoriesSuccess(json) {
   };
 };
 
-class HelloWorld extends React.Component {
+class Test extends React.Component {
   render () {
     const { categories } = this.props;
     const categoriesList = categories.map((category) => {
@@ -32,8 +32,6 @@ class HelloWorld extends React.Component {
 
     return (
       <React.Fragment>
-        Greeting: {this.props.greeting}
-        <br />
         <button className="getCategoriesBtn" onClick={() => this.props.getCategories()}>
           get categories
         </button>
@@ -50,4 +48,4 @@ const structuredSelector = createStructuredSelector({
 
 const mapDispatchToProps = { getCategories };
 
-export default connect(structuredSelector, mapDispatchToProps)(HelloWorld);
+export default connect(structuredSelector, mapDispatchToProps)(Test);

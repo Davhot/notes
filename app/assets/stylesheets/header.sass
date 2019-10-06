@@ -1,0 +1,33 @@
+header
+  @include padding-container
+  position: relative
+  display: flex
+  justify-content: space-between
+  align-items: center
+  height: 3em
+  background-color: $header-color
+
+@font-face
+  font-family: "Cherry Swash"
+  src: asset-url("CherrySwash-Regular.otf") format("opentype")
+
+#logo
+  font-size: 2em
+  color: #D9FFFF
+  font-family: Cherry Swash
+  cursor: pointer
+
+nav a
+  background-color: $button-header-color
+  border-radius: 1em
+  padding: 0.5em
+  color: #5A8C87
+  text-decoration: none
+  margin-left: 1em
+  .fa-plus
+    margin-right: 0.1em
+
+.hidden
+  width: 0
+  height: 0
+  visibility: hidden

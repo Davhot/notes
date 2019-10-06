@@ -1,0 +1,24 @@
+$mobile-size: 801px
+$padding-container-bg: 10%
+$padding-container-sm: 2%
+$header-color: #F2B56B
+$button-header-color: #FEE298
+
+@mixin padding-container
+  padding: 0 $padding-container-bg 0 $padding-container-bg
+  @media (max-width: $mobile-size)
+    padding: 0 $padding-container-sm 0 $padding-container-sm
+
+html, body
+  font-size: 1em
+  @media (max-width: $mobile-size)
+    font-size: 0.9em
+  margin: 0
+  padding: 0
+  font-family: sans-serif
+  height: 100%
+  background-color: #F2F0F0
+
+@import "header"
+@import "container"
+@import "footer"
