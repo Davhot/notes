@@ -1,26 +1,17 @@
 import React from "react";
+import images from './images';
+import { SketchPicker } from 'react-color'
 
-import Nav from "./Nav"
-import Footer from "./Footer"
+class CategoryAppBody extends React.Component {
 
-class Category extends React.Component {
+  get_color(color, event) {
+    console.log(color);
+  }
+
   render () {
-    return (
-      <React.Fragment>
-        <Nav>
-          <a className="delete-mode-btn hidden" href="#">
-            <i className="fa fa-square"></i>
-            choose all
-          </a>
-          <a className="delete-mode-btn hidden" href="#">
-            <i className="fa fa-times"></i>
-            delete
-          </a>
-          <a href="./add_category.html">
-            <i className="fa fa-plus"></i>
-            add category
-          </a>
-        </Nav>
+    const mode = this.props.mode;
+    if (mode == 'show') {
+      return (
         <div className="container">
           <div className="card red">
             <p>Title category</p>
@@ -50,10 +41,26 @@ class Category extends React.Component {
             <p>Title category</p>
           </div>
         </div>
-        <Footer />
-      </React.Fragment>
-    );
+      )
+    } else {
+      return (
+        <div className="container">
+          <form className="category-form">
+            <div className="category-body">
+              <input type="text" className="category-body-input" placeholder="Category Title..."/>
+            </div>
+            <div id="colorpicker-wrapper">
+              <p>Choose color:</p>
+              <SketchPicker
+                onChangeComplete={ this.get_color }
+                width="300px" />
+            </div>
+            <input type="submit" className="category-button" value="Submit"/>
+          </form>
+        </div>
+      )
+    }
   }
 }
 
-export default Category;
+export default CategoryAppBody;

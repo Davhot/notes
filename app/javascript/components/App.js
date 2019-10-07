@@ -4,7 +4,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom'
 
 import { Provider } from 'react-redux'
 
-import Category from './Category'
+import CategoryApp from './CategoryApp'
 import Test from './Test'
 
 import configureStore from '../configureStore'
@@ -16,8 +16,9 @@ class App extends React.Component {
       <Provider store={store}>
         <BrowserRouter>
           <Switch>
-            <Route exact path="/" render={() => <Category/>} />
+            <Route exact path="/" render={() => <CategoryApp/>} />
             <Route path="/test" render={() => <Test/>} />
+            // TODO: 404/422/500
           </Switch>
         </BrowserRouter>
       </Provider>

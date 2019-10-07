@@ -9,7 +9,8 @@ const initialState = {
       name: 'Category 1',
       color: '#eee'
     }
-  ]
+  ],
+  category_mode: 'show'
 };
 
 function rootReducer(state, action) {
@@ -17,6 +18,10 @@ function rootReducer(state, action) {
   switch (action.type) {
     case "GET_CATEGORIES_SUCCESS":
       return { categories: action.json.data };
+    case "SET_EDIT_MODE_SUCCESS":
+      return action;
+    case "SET_SHOW_MODE_SUCCESS":
+      return action;
   };
   return state;
 };
