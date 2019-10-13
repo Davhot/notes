@@ -44,7 +44,8 @@
       "app/javascript/test"
     ],
     "moduleNameMapper": {
-      "\\.(jpg|svg)$": "<rootDir>/app/javascript/components/images.js"
+      "\\.(jpg|svg)$": "<rootDir>/app/javascript/components/images.js",
+      "app/javascript/(.*)": "<rootDir>/app/javascript/$1"
     }
   }
 }

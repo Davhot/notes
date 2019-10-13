@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 import NoteAppNav from "./NoteAppNav"
 import NoteAppBody from "./NoteAppBody"
-import Footer from "./Footer"
+import Footer from "../Footer"
 
 const SET_EDIT_MODE_REQUEST = 'SET_EDIT_MODE_REQUEST';
 const SET_EDIT_MODE_SUCCESS = 'SET_EDIT_MODE_SUCCESS';

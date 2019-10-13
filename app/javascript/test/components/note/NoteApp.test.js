@@ -1,14 +1,14 @@
 import React from 'react';
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
-import NoteApp from '../../components/NoteApp';
-import NoteAppBody from '../../components/NoteAppBody';
-import NoteAppNav from '../../components/NoteAppNav';
-import Footer from '../../components/Footer'
-import '../setupTests';
+import NoteApp from 'app/javascript/components/note/NoteApp';
+import NoteAppBody from 'app/javascript/components/note/NoteAppBody';
+import NoteAppNav from 'app/javascript/components/note/NoteAppNav';
+import Footer from 'app/javascript/components/Footer'
+import '../../setupTests';
 import { shallow, mount } from 'enzyme';
 
-import configureStore from '../../configureStore'
+import configureStore from 'app/javascript/configureStore'
 const store = configureStore()
 
 describe('NoteApp', () => {

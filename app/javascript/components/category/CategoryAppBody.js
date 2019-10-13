@@ -1,5 +1,5 @@
 import React from "react";
-import images from './images';
+import images from '../images';
 import { SketchPicker } from 'react-color'
 
 class CategoryAppBody extends React.Component {

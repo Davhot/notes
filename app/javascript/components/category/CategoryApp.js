@@ -4,10 +4,10 @@ import { createStructuredSelector } from "reselect";
 
 import CategoryAppNav from "./CategoryAppNav"
 import CategoryAppBody from "./CategoryAppBody"
-import Footer from "./Footer"
+import Footer from "../Footer"
 
 // TODO:
-// 1. Тестирование приложения перед рефакторингом
+// 1. Тестирование App
 // 2. Вынести все методы и states в отдельный файл
 // 3. Реаргонизовать структуру приложения
 // 4. Сохранять состояние mode между запросами

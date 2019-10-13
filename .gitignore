@@ -25,3 +25,5 @@ yarn-debug.log*
 yarn.lock
 /coverage/*
 advantages.txt
+.rbenv-vars
+.env

@@ -4,8 +4,8 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom'
 
 import { Provider } from 'react-redux'
 
-import CategoryApp from './CategoryApp'
-import NoteApp from './NoteApp'
+import CategoryApp from './category/CategoryApp'
+import NoteApp from './note/NoteApp'
 import Test from './Test'
 
 import configureStore from '../configureStore'

@@ -1,12 +1,10 @@
 import React from 'react';
-import CategoryAppNav from '../../components/CategoryAppNav';
-import '../setupTests';
+import CategoryAppNav from 'app/javascript/components/category/CategoryAppNav';
+import '../../setupTests';
 import { shallow } from 'enzyme';
 
 describe('CategoryAppBody', () => {
-  const wrapper = shallow(
-    <CategoryAppNav mode='show'/>
-  );
+  const wrapper = shallow(<CategoryAppNav mode='show'/>);
   it('should render 3 buttons', () => {
     expect(wrapper.find('#choose-all-btn').length).toBe(1);
     expect(wrapper.find('#delete-btn').length).toBe(1);

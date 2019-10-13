@@ -1,9 +1,9 @@
 import React from "react";
-import images from './images';
+import images from '../images';
 
-import Nav from "./Nav"
+import Nav from "../Nav"
 
-class CategoryAppNav extends React.Component {
+class NoteAppNav extends React.Component {
   render () {
     const mode = this.props.mode;
     if (mode == 'show') {
@@ -17,9 +17,9 @@ class CategoryAppNav extends React.Component {
             <i className="fa fa-times"></i>
             delete
           </a>
-          <button id='add-category-btn' onClick={() => this.props.setEditMode()}>
+          <button id='add-note-btn' onClick={() => this.props.setEditMode()}>
             <i className="fa fa-plus"></i>
-            add category
+            add note
           </button>
         </Nav>
       )
@@ -35,4 +35,4 @@ class CategoryAppNav extends React.Component {
   }
 }
 
-export default CategoryAppNav;
+export default NoteAppNav;

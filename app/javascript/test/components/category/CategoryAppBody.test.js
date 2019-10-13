@@ -1,12 +1,10 @@
 import React from 'react';
-import CategoryAppBody from '../../components/CategoryAppBody';
-import '../setupTests';
+import CategoryAppBody from 'app/javascript/components/category/CategoryAppBody';
+import '../../setupTests';
 import { shallow } from 'enzyme';
 
 describe('CategoryAppBody', () => {
-  const wrapper_show = shallow(
-    <CategoryAppBody mode='show'/>
-  );
+  const wrapper_show = shallow(<CategoryAppBody mode='show'/>);
   it('should render .container', () => {
     expect(wrapper_show.find('.container').length).toBe(1);
   });

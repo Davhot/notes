@@ -1,14 +1,14 @@
 import React from 'react';
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
-import CategoryApp from '../../components/CategoryApp';
-import CategoryAppBody from '../../components/CategoryAppBody';
-import CategoryAppNav from '../../components/CategoryAppNav';
-import Footer from '../../components/Footer'
-import '../setupTests';
+import CategoryApp from 'app/javascript/components/category/CategoryApp';
+import CategoryAppBody from 'app/javascript/components/category/CategoryAppBody';
+import CategoryAppNav from 'app/javascript/components/category/CategoryAppNav';
+import Footer from 'app/javascript/components/Footer'
+import '../../setupTests';
 import { shallow, mount } from 'enzyme';
 
-import configureStore from '../../configureStore'
+import configureStore from 'app/javascript/configureStore'
 const store = configureStore()
 
 describe('CategoryApp', () => {

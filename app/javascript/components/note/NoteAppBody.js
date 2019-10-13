@@ -1,5 +1,5 @@
 import React from "react";
-import images from './images';
+import images from '../images';
 import Select from 'react-select';
 
 class NoteAppBody extends React.Component {
@@ -77,7 +77,7 @@ class NoteAppBody extends React.Component {
             <div className="note-body">
               <textarea className="note-body-input" placeholder="Please enter body..."></textarea>
             </div>
-            <input type="submit" className="category-button" value="Submit" />
+            <input type="submit" className="note-button" value="Submit" />
           </form>
         </div>
       )
