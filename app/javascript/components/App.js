@@ -5,6 +5,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import { Provider } from 'react-redux'
 
 import CategoryApp from './CategoryApp'
+import NoteApp from './NoteApp'
 import Test from './Test'
 
 import configureStore from '../configureStore'
@@ -17,6 +18,7 @@ class App extends React.Component {
         <BrowserRouter>
           <Switch>
             <Route exact path="/" render={() => <CategoryApp/>} />
+            <Route exact path="/notes" render={() => <NoteApp/>} />
             <Route path="/test" render={() => <Test/>} />
             // TODO: 404/422/500
           </Switch>

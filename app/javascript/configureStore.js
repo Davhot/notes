@@ -10,7 +10,7 @@ const initialState = {
       color: '#eee'
     }
   ],
-  category_mode: 'show'
+  mode: 'show'
 };
 
 function rootReducer(state, action) {

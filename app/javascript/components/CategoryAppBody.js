@@ -3,6 +3,9 @@ import images from './images';
 import { SketchPicker } from 'react-color'
 
 class CategoryAppBody extends React.Component {
+  redirect_to_notes() {
+    window.location.href = '/notes'
+  }
 
   get_color(color, event) {
     console.log(color);
@@ -13,7 +16,7 @@ class CategoryAppBody extends React.Component {
     if (mode == 'show') {
       return (
         <div className="container">
-          <div className="card red">
+          <div className="card red" onClick={() => this.redirect_to_notes()}>
             <p>Title category</p>
           </div>
           <div className="card orange">

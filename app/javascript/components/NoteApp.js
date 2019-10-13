@@ -1,16 +1,11 @@
 import React from "react";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
+import { Link } from 'react-router-dom';
 
-import CategoryAppNav from "./CategoryAppNav"
-import CategoryAppBody from "./CategoryAppBody"
+import NoteAppNav from "./NoteAppNav"
+import NoteAppBody from "./NoteAppBody"
 import Footer from "./Footer"
-
-// TODO:
-// 1. Тестирование приложения перед рефакторингом
-// 2. Вынести все методы и states в отдельный файл
-// 3. Реаргонизовать структуру приложения
-// 4. Сохранять состояние mode между запросами
 
 const SET_EDIT_MODE_REQUEST = 'SET_EDIT_MODE_REQUEST';
 const SET_EDIT_MODE_SUCCESS = 'SET_EDIT_MODE_SUCCESS';
@@ -50,14 +45,14 @@ export function setShowModeSuccess() {
   };
 };
 
-class CategoryApp extends React.Component {
+class NoteApp extends React.Component {
   render () {
     const { mode, setEditMode, setShowMode } = this.props;
     console.log(this.props);
     return (
       <React.Fragment>
-        <CategoryAppNav mode={mode} setEditMode={setEditMode} setShowMode={setShowMode}/>
-        <CategoryAppBody mode={mode}/>
+        <NoteAppNav mode={mode} setEditMode={setEditMode} setShowMode={setShowMode}/>
+        <NoteAppBody mode={mode}/>
         <Footer mode={mode}/>
       </React.Fragment>
     );
@@ -70,4 +65,4 @@ const structuredSelector = createStructuredSelector({
 
 const mapDispatchToProps = { setShowMode, setEditMode };
 
-export default connect(structuredSelector, mapDispatchToProps)(CategoryApp);
+export default connect(structuredSelector, mapDispatchToProps)(NoteApp);
