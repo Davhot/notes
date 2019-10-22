@@ -60,11 +60,10 @@ export function setShowModeSuccess() {
 class CategoryApp extends React.Component {
   render () {
     const { mode, setEditMode, setShowMode } = this.props;
-    console.log(this.props);
     return (
       <React.Fragment>
         <CategoryAppNav mode={mode} setEditMode={setEditMode} setShowMode={setShowMode}/>
-        <CategoryAppBody mode={mode}/>
+        <CategoryAppBody/>
         <Footer mode={mode}/>
       </React.Fragment>
     );
@@ -75,6 +74,6 @@ const structuredSelector = createStructuredSelector({
   mode: state => state.mode
 });
 
-const mapDispatchToProps = { setShowMode, setEditMode };
+const mapDispatchToProps = { setShowMode, setEditMode }; // выносим методы отдельно от компонента
 
 export default connect(structuredSelector, mapDispatchToProps)(CategoryApp);

@@ -11,4 +11,4 @@ back_tests:
 	bundle exec rspec
 
 front_tests:
-	npm run test
+	yarn run test
