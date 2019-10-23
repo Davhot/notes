@@ -10,7 +10,7 @@ class Category extends React.Component {
 
   render () {
     return (
-      <div className="card red" onClick={() => this.redirect_to_notes()}>
+      <div className="card" style={{background: this.props.category.color}} onClick={() => this.redirect_to_notes()}>
         <p>{this.props.category.name}</p>
       </div>
     )

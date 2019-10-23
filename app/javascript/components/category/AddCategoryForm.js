@@ -2,10 +2,9 @@ import React from 'react'
 import { SketchPicker } from 'react-color'
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
+import { createCategorySuccess } from "./CategoryActions"
 
 const CREATE_CATEGORY_REQUEST = 'CREATE_CATEGORY_REQUEST';
-const CREATE_CATEGORY_SUCCESS = 'CREATE_CATEGORY_SUCCESS';
-
 function createCategory(data) {
   console.log('createCategories Action!');
   console.log(data)
@@ -23,29 +22,6 @@ function createCategory(data) {
     }).then(response => response.json())
       .then(json => dispatch(createCategorySuccess(json)))
       .then(error => console.log(error));
-  };
-};
-
-export function createCategorySuccess(json) {
-  return {
-    type: CREATE_CATEGORY_SUCCESS,
-    json
-  };
-};
-
-function setEditMode() {
-  console.log('setEditMode Action!');
-  return dispatch => {
-    dispatch({ type: SET_EDIT_MODE_REQUEST });
-    return dispatch(setEditModeSuccess());
-  };
-};
-
-export function setEditModeSuccess() {
-  console.log('setEditModeSuccess Action!');
-  return {
-    type: SET_EDIT_MODE_SUCCESS,
-    mode: 'edit'
   };
 };
 
@@ -70,8 +46,9 @@ class AddCategoryForm extends React.Component {
       name,
       color
     }
-    console.log(data)
-    this.props.createCategory(data)
+    console.log(data);
+    this.props.createCategory(data);
+    this.getTitle.value = '';
   }
 
   render () {

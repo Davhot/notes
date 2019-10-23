@@ -6,7 +6,6 @@ import { Provider } from 'react-redux'
 
 import CategoryApp from './category/CategoryApp'
 import NoteApp from './note/NoteApp'
-import Test from './Test'
 
 import configureStore from '../configureStore'
 const store = configureStore()
@@ -19,7 +18,6 @@ class App extends React.Component {
           <Switch>
             <Route exact path="/" render={() => <CategoryApp/>} />
             <Route exact path="/notes" render={() => <NoteApp/>} />
-            <Route path="/test" render={() => <Test/>} />
             // TODO: 404/422/500
           </Switch>
         </BrowserRouter>
