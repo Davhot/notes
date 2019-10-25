@@ -1,17 +1,24 @@
 import React from 'react';
 import AddCategoryForm from 'app/javascript/components/category/AddCategoryForm';
+import { SketchPicker } from 'react-color'
+import { connect } from "react-redux";
+import { createStructuredSelector } from "reselect";
 import '../../setupTests';
-import { shallow } from 'enzyme';
+import { mount } from 'enzyme';
+import "isomorphic-fetch"
+
+import configureStore from 'app/javascript/configureStore'
+let store, wrapper;
+
+beforeEach(()=>{
+  store = configureStore();
+  wrapper = mount(<AddCategoryForm store={store}/>);
+});
 
 describe('AddCategoryForm', () => {
-  const wrapper_edit = shallow(<AddCategoryForm/>);
-  it('should render .category-body-input', () => {
-    expect(wrapper_edit.find('.category-body-input').length).toBe(1);
-  });
-  it('should render #colorpicker-wrapper', () => {
-    expect(wrapper_edit.find('#colorpicker-wrapper').length).toBe(1);
-  });
-  it('should render .category-button', () => {
-    expect(wrapper_edit.find('.category-button').length).toBe(1);
+  it('should render create category form', () => {
+    expect(wrapper.find('form.category-form').length).toBe(1);
+    expect(wrapper.find('input.category-body-input').length).toBe(1);
+    expect(wrapper.find(SketchPicker).length).toBe(1);
   });
 });

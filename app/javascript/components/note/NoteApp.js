@@ -11,7 +11,6 @@ const SET_EDIT_MODE_REQUEST = 'SET_EDIT_MODE_REQUEST';
 const SET_EDIT_MODE_SUCCESS = 'SET_EDIT_MODE_SUCCESS';
 
 function setEditMode() {
-  console.log('setEditMode Action!');
   return dispatch => {
     dispatch({ type: SET_EDIT_MODE_REQUEST });
     return dispatch(setEditModeSuccess());
@@ -19,7 +18,6 @@ function setEditMode() {
 };
 
 export function setEditModeSuccess() {
-  console.log('setEditModeSuccess Action!');
   return {
     type: SET_EDIT_MODE_SUCCESS,
     mode: 'edit'
@@ -30,7 +28,6 @@ const SET_SHOW_MODE_REQUEST = 'SET_SHOW_MODE_REQUEST';
 const SET_SHOW_MODE_SUCCESS = 'SET_SHOW_MODE_SUCCESS';
 
 function setShowMode() {
-  console.log('setShowMode Action!');
   return dispatch => {
     dispatch({ type: SET_SHOW_MODE_REQUEST });
     return dispatch(setShowModeSuccess());
@@ -38,7 +35,6 @@ function setShowMode() {
 };
 
 export function setShowModeSuccess() {
-  console.log('setShowModeSuccess Action!');
   return {
     type: SET_SHOW_MODE_SUCCESS,
     mode: 'show'
@@ -48,7 +44,6 @@ export function setShowModeSuccess() {
 class NoteApp extends React.Component {
   render () {
     const { mode, setEditMode, setShowMode } = this.props;
-    console.log(this.props);
     return (
       <React.Fragment>
         <NoteAppNav mode={mode} setEditMode={setEditMode} setShowMode={setShowMode}/>

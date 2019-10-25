@@ -3,9 +3,8 @@ import { SketchPicker } from 'react-color'
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
 import { createCategorySuccess, setShowModeSuccess } from "./CategoryActions"
-
+import "isomorphic-fetch"
 import toaster from 'toasted-notes';
-import 'toasted-notes/src/styles.css';
 
 const CREATE_CATEGORY_REQUEST = 'CREATE_CATEGORY_REQUEST';
 function createCategory(data) {

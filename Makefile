@@ -11,4 +11,4 @@ back_tests:
 	bundle exec rspec
 
 front_tests:
-	yarn run test
+	yarn run test -- --coverage
