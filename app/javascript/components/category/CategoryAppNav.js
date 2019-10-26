@@ -1,7 +1,10 @@
 import React from "react";
 import images from '../images';
+import { connect } from "react-redux";
+import { createStructuredSelector } from "reselect";
 
 import Nav from "../Nav"
+import { setMode } from "./CategoryActions"
 
 class CategoryAppNav extends React.Component {
   render () {
@@ -17,7 +20,7 @@ class CategoryAppNav extends React.Component {
             <i className="fa fa-times"></i>
             delete
           </a>
-          <button id='add-category-btn' onClick={() => this.props.setEditMode()}>
+          <button id='add-category-btn' onClick={() => this.props.setMode('edit')}>
             <i className="fa fa-plus"></i>
             add category
           </button>
@@ -26,7 +29,7 @@ class CategoryAppNav extends React.Component {
     } else {
       return (
         <Nav>
-          <button id='cancel-btn' onClick={() => this.props.setShowMode()}>
+          <button id='cancel-btn' onClick={() => this.props.setMode('show')}>
             cancel
           </button>
         </Nav>
@@ -35,4 +38,10 @@ class CategoryAppNav extends React.Component {
   }
 }
 
-export default CategoryAppNav;
+const structuredSelector = createStructuredSelector({
+  mode: state => state.mode
+});
+
+const mapDispatchToProps = { setMode }; // выносим методы отдельно от компонента
+
+export default connect(structuredSelector, mapDispatchToProps)(CategoryAppNav);

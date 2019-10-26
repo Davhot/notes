@@ -14,18 +14,13 @@ export function getCategoriesSuccess(data) {
   };
 };
 
-const SET_EDIT_MODE_SUCCESS = 'SET_EDIT_MODE_SUCCESS';
-export function setEditModeSuccess() {
-  return {
-    type: SET_EDIT_MODE_SUCCESS,
-    mode: 'edit'
-  };
-};
-
-const SET_SHOW_MODE_SUCCESS = 'SET_SHOW_MODE_SUCCESS';
-export function setShowModeSuccess() {
-  return {
-    type: SET_SHOW_MODE_SUCCESS,
-    mode: 'show'
+const SET_MODE = 'SET_MODE';
+export function setMode(mode) {
+  const params = {
+    type: SET_MODE,
+    mode: mode
+  }
+  return dispatch => {
+    return dispatch(params);
   };
 };

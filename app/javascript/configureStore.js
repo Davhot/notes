@@ -13,9 +13,7 @@ function rootReducer(state, action) {
       return { ...state, categories: action.categories };
     case "CREATE_CATEGORY_SUCCESS":
       return {...state, categories: state.categories.concat([action.json]) };
-    case "SET_EDIT_MODE_SUCCESS":
-      return { ...state, mode: action.mode }
-    case "SET_SHOW_MODE_SUCCESS":
+    case "SET_MODE":
       return { ...state, mode: action.mode }
   };
   return state;

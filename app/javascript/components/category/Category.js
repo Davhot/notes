@@ -17,4 +17,4 @@ class Category extends React.Component {
   }
 }
 
-export default connect()(Category);
+export default Category;

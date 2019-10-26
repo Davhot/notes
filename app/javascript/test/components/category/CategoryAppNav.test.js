@@ -1,18 +1,32 @@
 import React from 'react';
 import CategoryAppNav from 'app/javascript/components/category/CategoryAppNav';
 import '../../setupTests';
-import { shallow } from 'enzyme';
+import { mount } from 'enzyme';
+import configureMockStore from 'redux-mock-store';
+import thunk from 'redux-thunk';
+import configureStore from 'app/javascript/configureStore'
+
+const initialState = configureStore().getState();
+
+const middlewares = [thunk];
+const mockStore = configureMockStore(middlewares);
+let store = mockStore(initialState);
+let wrapper;
 
 describe('CategoryAppBody', () => {
-  const wrapper = shallow(<CategoryAppNav mode='show'/>);
   it('should render 3 buttons', () => {
+    store = mockStore({ ...initialState, mode: 'show' });
+    wrapper = mount(<CategoryAppNav store={store}/>);
+
     expect(wrapper.find('#choose-all-btn').length).toBe(1);
     expect(wrapper.find('#delete-btn').length).toBe(1);
     expect(wrapper.find('#add-category-btn').length).toBe(1);
   });
 
-  const wrapper_edit = shallow(<CategoryAppNav mode='edit'/>);
   it('should render cancel button', () => {
-    expect(wrapper_edit.find('#cancel-btn').length).toBe(1);
+    store = mockStore({ ...initialState, mode: 'edit' });
+    wrapper = mount(<CategoryAppNav store={store}/>);
+
+    expect(wrapper.find('#cancel-btn').length).toBe(1);
   });
 });

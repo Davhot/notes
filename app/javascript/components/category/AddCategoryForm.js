@@ -2,9 +2,10 @@ import React from 'react'
 import { SketchPicker } from 'react-color'
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
-import { createCategorySuccess, setShowModeSuccess } from "./CategoryActions"
 import "isomorphic-fetch"
 import toaster from 'toasted-notes';
+
+import { createCategorySuccess, setMode } from "./CategoryActions"
 
 const CREATE_CATEGORY_REQUEST = 'CREATE_CATEGORY_REQUEST';
 function createCategory(data) {
@@ -24,14 +25,6 @@ function createCategory(data) {
     }).then(response => response.json())
       .then(json => dispatch(createCategorySuccess(json)))
       .then(error => console.log(error));
-  };
-};
-
-const SET_SHOW_MODE_REQUEST = 'SET_SHOW_MODE_REQUEST';
-function setShowMode() {
-  return dispatch => {
-    dispatch({ type: SET_SHOW_MODE_REQUEST });
-    return dispatch(setShowModeSuccess());
   };
 };
 
@@ -59,7 +52,7 @@ class AddCategoryForm extends React.Component {
     console.log(data);
     this.props.createCategory(data);
     this.getTitle.value = '';
-    this.props.setShowMode();
+    this.props.setMode('show');
     toaster.notify('Успешно создано!', { duration: 2000, position: 'top-right' });
   }
 
@@ -89,6 +82,6 @@ function mapStateToProps(state) {
   return state
 }
 
-const mapDispatchToProps = { createCategory, setShowMode }; // выносим методы отдельно от компонента
+const mapDispatchToProps = { createCategory, setMode }; // выносим методы отдельно от компонента
 
 export default connect(mapStateToProps, mapDispatchToProps, null, { forwardRef: true })(AddCategoryForm); // благодаря connect() можно использовать dispatch

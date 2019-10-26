@@ -1,10 +1,12 @@
 import React from "react";
 import images from './images';
 
+import { connect } from "react-redux";
+import { createStructuredSelector } from "reselect";
+
 class Footer extends React.Component {
   render () {
-    const mode = this.props.mode;
-    if (mode == 'show') {
+    if (this.props.mode == 'show') {
       return (
         <footer>
           <div id="change-block-btn">
@@ -25,4 +27,8 @@ class Footer extends React.Component {
   }
 }
 
-export default Footer;
+const structuredSelector = createStructuredSelector({
+  mode: state => state.mode
+});
+
+export default connect(structuredSelector)(Footer);
