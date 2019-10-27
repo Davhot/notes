@@ -6,7 +6,7 @@ import { createStructuredSelector } from "reselect";
 
 class Footer extends React.Component {
   render () {
-    if (this.props.mode == 'show') {
+    if (this.props.mode == 'show' || this.props.mode == 'delete') {
       return (
         <footer>
           <div id="change-block-btn">

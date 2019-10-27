@@ -5,13 +5,9 @@ import Category from './Category'
 import { connect } from "react-redux";
 
 class CategoryAppBody extends React.Component {
-  redirect_to_notes() {
-    window.location.href = '/notes'
-  }
-
   render () {
     const mode = this.props.mode;
-    if (mode == 'show') {
+    if (mode == 'show' || mode == 'delete') {
       return (
         <div className="container">
           {this.props.categories.map((category) => <Category key={category.id} category={category} />)}

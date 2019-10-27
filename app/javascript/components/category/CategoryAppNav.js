@@ -4,22 +4,48 @@ import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
 
 import Nav from "../Nav"
-import { setMode } from "./CategoryActions"
+import { setMode, selectCategories } from "./CategoryActions"
 
 class CategoryAppNav extends React.Component {
+  constructor(props) {
+    super(props);
+    this.chooseAllCategories = this.chooseAllCategories.bind(this);
+  }
+
+  isChoosenAll() {
+    let n = this.props.categories.length;
+    let n_selected = this.props.categories.filter(function(category) { return category.selected }).length
+    return n == n_selected
+  }
+
+  chooseAllCategories() {
+    let categories, category_ids;
+    if(!this.isChoosenAll()) {
+      categories = this.props.categories.filter(function(category) { return !category.selected });
+    } else {
+      categories = this.props.categories;
+      this.props.setMode('show')
+    }
+    category_ids = categories.map(function(category){ return category.id })
+    this.props.selectCategories(category_ids);
+  }
+
   render () {
     const mode = this.props.mode;
-    if (mode == 'show') {
+    let delete_mode_class = "delete-mode-btn";
+    if (mode != 'delete') { delete_mode_class += " hidden" }
+    let choose_all_btn_icon = this.isChoosenAll() ? "fa fa-check-square" : "fa fa-square";
+    if (mode == 'show' || mode == 'delete') {
       return (
         <Nav>
-          <a id='choose-all-btn' className="delete-mode-btn hidden" href="#">
-            <i className="fa fa-square"></i>
+          <button id='choose-all-btn' className={delete_mode_class} onClick={this.chooseAllCategories}>
+            <i className={choose_all_btn_icon}></i>
             choose all
-          </a>
-          <a id='delete-btn' className="delete-mode-btn hidden" href="#">
+          </button>
+          <button id='delete-btn' className={delete_mode_class} href="#">
             <i className="fa fa-times"></i>
             delete
-          </a>
+          </button>
           <button id='add-category-btn' onClick={() => this.props.setMode('edit')}>
             <i className="fa fa-plus"></i>
             add category
@@ -39,9 +65,10 @@ class CategoryAppNav extends React.Component {
 }
 
 const structuredSelector = createStructuredSelector({
-  mode: state => state.mode
+  mode: state => state.mode,
+  categories: state => state.categories
 });
 
-const mapDispatchToProps = { setMode }; // выносим методы отдельно от компонента
+const mapDispatchToProps = { setMode, selectCategories }; // выносим методы отдельно от компонента
 
 export default connect(structuredSelector, mapDispatchToProps)(CategoryAppNav);

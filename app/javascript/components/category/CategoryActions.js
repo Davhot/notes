@@ -1,26 +1,40 @@
-const CREATE_CATEGORY_SUCCESS = 'CREATE_CATEGORY_SUCCESS';
 export function createCategorySuccess(json) {
   return {
-    type: CREATE_CATEGORY_SUCCESS,
+    type: 'CREATE_CATEGORY_SUCCESS',
     json
   };
 };
 
-const GET_CATEGORIES_SUCCESS = 'GET_CATEGORIES_SUCCESS';
 export function getCategoriesSuccess(data) {
   return {
-    type: GET_CATEGORIES_SUCCESS,
+    type: 'GET_CATEGORIES_SUCCESS',
     categories: data
   };
 };
 
-const SET_MODE = 'SET_MODE';
 export function setMode(mode) {
   const params = {
-    type: SET_MODE,
+    type: 'SET_MODE',
     mode: mode
   }
   return dispatch => {
     return dispatch(params);
   };
 };
+
+export function selectCategories(category_ids) {
+  const params = {
+    type: 'SELECT_CATEGORIES',
+    category_ids: category_ids
+  }
+  return dispatch => {
+    return dispatch(params);
+  };
+}
+
+export function deleteCategories() {
+  // TODO: делать через REQUEST/SUCCESS
+  return dispatch => {
+    return dispatch({ type: 'DELETE_CATEGORIES' });
+  };
+}
