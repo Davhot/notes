@@ -5,7 +5,7 @@ class Api::V1::CategoriesController < Api::V1::BaseController
   before_action :find_category, only: %i[show update destroy]
 
   def index
-    @categories = Category.all
+    @categories = Category.all.order(created_at: :desc)
     render 'index.json', status: :ok
   end
 
@@ -26,6 +26,13 @@ class Api::V1::CategoriesController < Api::V1::BaseController
 
   def destroy
     @category.destroy
+
+    head 204
+  end
+
+  def multiple_destroy
+    @categories = Category.where(id: params.require(:category).permit(ids: [])[:ids])
+    @categories.delete_all
 
     head 204
   end

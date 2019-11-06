@@ -7,12 +7,8 @@ import toaster from 'toasted-notes';
 
 import { createCategorySuccess, setMode } from "./CategoryActions"
 
-const CREATE_CATEGORY_REQUEST = 'CREATE_CATEGORY_REQUEST';
-function createCategory(data) {
-  console.log('createCategories Action!');
-  console.log(data)
+function createCategoryRequest(data) {
   return dispatch => {
-    dispatch({ type: CREATE_CATEGORY_REQUEST });
     return fetch('api/v1/categories', {
       method: 'POST', // *GET, POST, PUT, DELETE, etc.
       mode: 'cors', // no-cors, cors, *same-origin
@@ -21,7 +17,7 @@ function createCategory(data) {
       headers: { 'Content-Type': 'application/json' },
       redirect: 'follow', // manual, *follow, error
       referrer: 'no-referrer', // no-referrer, *client
-      body: JSON.stringify(data) // тип данных в body должен соответвовать значению заголовка "Content-Type"
+      body: JSON.stringify(data)
     }).then(response => response.json())
       .then(json => dispatch(createCategorySuccess(json)))
       .then(error => console.log(error));
@@ -41,7 +37,6 @@ class AddCategoryForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault()
-    console.log()
     const name = this.getTitle.value
     const color = this.color
     const data = {
@@ -50,7 +45,7 @@ class AddCategoryForm extends React.Component {
       color
     }
     console.log(data);
-    this.props.createCategory(data);
+    this.props.createCategoryRequest(data);
     this.getTitle.value = '';
     this.props.setMode('show');
     toaster.notify('Успешно создано!', { duration: 2000, position: 'top-right' });
@@ -82,6 +77,6 @@ function mapStateToProps(state) {
   return state
 }
 
-const mapDispatchToProps = { createCategory, setMode }; // выносим методы отдельно от компонента
+const mapDispatchToProps = { createCategoryRequest, setMode }; // выносим методы отдельно от компонента
 
 export default connect(mapStateToProps, mapDispatchToProps, null, { forwardRef: true })(AddCategoryForm); // благодаря connect() можно использовать dispatch

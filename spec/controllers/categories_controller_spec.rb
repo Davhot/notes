@@ -88,4 +88,22 @@ RSpec.describe Api::V1::CategoriesController, type: :controller do
       expect(Category.count).to eq(0)
     end
   end
+
+  describe 'Delete #multiple_destroy' do
+    let(:ids) do
+      3.times { create :category }
+      Category.ids
+    end
+
+    it 'render status 200' do
+      delete :multiple_destroy, params: { category: { ids: [category.id] } }
+      expect(response).to have_http_status(:success)
+    end
+
+    it 'check multiple_destroy categories' do
+      delete :multiple_destroy, params: { category: { ids: ids } }
+
+      expect(Category.count).to eq(0)
+    end
+  end
 end

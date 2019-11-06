@@ -37,9 +37,9 @@ function rootReducer(state, action) {
         return category;
       });
       return {...state, categories: deepCloneOfNestedObject(categories) };
-    case "DELETE_CATEGORIES":
-      // TODO: фильтровать категории
-      return state;
+    case "DELETE_CATEGORIES_SUCCESS":
+      let categories = state.categories.filter(function(category) { return !category.selected })
+      return { ...state, categories: categories }
   };
   return state;
 };

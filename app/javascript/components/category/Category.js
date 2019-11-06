@@ -32,7 +32,7 @@ class Category extends React.Component {
   }
 
   render () {
-    let category_class = "card";
+    let category_class = "card noselect";
     if (this.props.category.selected) { category_class += " checked" }
     return (
       <div className={category_class}

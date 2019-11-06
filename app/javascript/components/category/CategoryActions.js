@@ -12,6 +12,10 @@ export function getCategoriesSuccess(data) {
   };
 };
 
+export function deleteCategoriesSuccess(){
+  return { type: 'DELETE_CATEGORIES_SUCCESS' };
+}
+
 export function setMode(mode) {
   const params = {
     type: 'SET_MODE',
@@ -29,12 +33,5 @@ export function selectCategories(category_ids) {
   }
   return dispatch => {
     return dispatch(params);
-  };
-}
-
-export function deleteCategories() {
-  // TODO: делать через REQUEST/SUCCESS
-  return dispatch => {
-    return dispatch({ type: 'DELETE_CATEGORIES' });
   };
 }

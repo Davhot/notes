@@ -4,18 +4,30 @@ import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
 
 import Nav from "../Nav"
-import { setMode, selectCategories } from "./CategoryActions"
+import { setMode, selectCategories, deleteCategoriesSuccess } from "./CategoryActions"
+
+function deleteCategoriesRequest(category_ids) {
+  console.log(category_ids);
+  return dispatch => {
+    return fetch('api/v1/categories/multiple_destroy', {
+      method: 'DELETE', // *GET, POST, PUT, DELETE, etc.
+      mode: 'cors', // no-cors, cors, *same-origin
+      cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+      credentials: 'same-origin', // include, *same-origin, omit
+      headers: { 'Content-Type': 'application/json' },
+      redirect: 'follow', // manual, *follow, error
+      referrer: 'no-referrer', // no-referrer, *client
+      body: JSON.stringify(category_ids)
+    }).then(response => dispatch(deleteCategoriesSuccess()))
+      .catch(error => console.log(error));
+  }
+};
 
 class CategoryAppNav extends React.Component {
   constructor(props) {
     super(props);
     this.chooseAllCategories = this.chooseAllCategories.bind(this);
-  }
-
-  isChoosenAll() {
-    let n = this.props.categories.length;
-    let n_selected = this.props.categories.filter(function(category) { return category.selected }).length
-    return n == n_selected
+    this.delete_categories = this.delete_categories.bind(this);
   }
 
   chooseAllCategories() {
@@ -30,6 +42,19 @@ class CategoryAppNav extends React.Component {
     this.props.selectCategories(category_ids);
   }
 
+  isChoosenAll() {
+    let n = this.props.categories.length;
+    let n_selected = this.props.categories.filter(function(category) { return category.selected }).length
+    return n == n_selected
+  }
+
+  delete_categories() {
+    var category_ids = this.props.categories.filter(function(category) { return category.selected })
+                                            .map(function(category) { return category.id });
+    category_ids = { category: { ids: category_ids } };
+    this.props.deleteCategoriesRequest(category_ids);
+  }
+
   render () {
     const mode = this.props.mode;
     let delete_mode_class = "delete-mode-btn";
@@ -42,7 +67,7 @@ class CategoryAppNav extends React.Component {
             <i className={choose_all_btn_icon}></i>
             choose all
           </button>
-          <button id='delete-btn' className={delete_mode_class} href="#">
+          <button id='delete-btn' className={delete_mode_class} onClick={this.delete_categories}>
             <i className="fa fa-times"></i>
             delete
           </button>
@@ -69,6 +94,6 @@ const structuredSelector = createStructuredSelector({
   categories: state => state.categories
 });
 
-const mapDispatchToProps = { setMode, selectCategories }; // выносим методы отдельно от компонента
+const mapDispatchToProps = { setMode, selectCategories, deleteCategoriesRequest, deleteCategoriesSuccess }; // выносим методы отдельно от компонента
 
 export default connect(structuredSelector, mapDispatchToProps)(CategoryAppNav);

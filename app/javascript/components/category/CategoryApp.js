@@ -9,20 +9,17 @@ import { getCategoriesSuccess } from "./CategoryActions"
 
 // TODO:
 // Сделать работающее приложение
-// 1. Выбор категорий по одной или все сразу и удаление (осталось: тесты!!!)
-// 2. Создание заметки
-// 3. Отображение заметки
-// 4. Удаление заметок
-// 5. Редактирование категории
-// 6. Редактирование заметки
-// 7. Кнопка количества блоков на странице
-// 8. Пагинация
-// 9. безопасность апишки по токену
+// 1. Создание заметки
+// 2. Отображение заметки
+// 3. Удаление заметок
+// 4. Редактирование категории
+// 5. Редактирование заметки
+// 6. Кнопка количества блоков на странице
+// 7. Пагинация
+// 8. безопасность апишки по токену
 
-const GET_CATEGORIES_REQUEST = 'GET_CATEGORIES_REQUEST';
-function loadCategories() {
+function getCategoriesRequest() {
   return dispatch => {
-    dispatch({ type: GET_CATEGORIES_REQUEST });
     return fetch('api/v1/categories', {
       method: 'GET', // *GET, POST, PUT, DELETE, etc.
       mode: 'cors', // no-cors, cors, *same-origin
@@ -39,7 +36,7 @@ function loadCategories() {
 
 class CategoryApp extends React.Component {
   render () {
-    this.props.loadCategories();
+    this.props.getCategoriesRequest();
     const { mode } = this.props;
     return (
       <React.Fragment>
@@ -55,6 +52,6 @@ const structuredSelector = createStructuredSelector({
   mode: state => state.mode
 });
 
-const mapDispatchToProps = { loadCategories }; // выносим методы отдельно от компонента
+const mapDispatchToProps = { getCategoriesRequest }; // выносим методы отдельно от компонента
 
 export default connect(structuredSelector, mapDispatchToProps)(CategoryApp);

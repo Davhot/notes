@@ -89,4 +89,22 @@ resource 'Categories' do
       expect(status).to eq(204)
     end
   end
+
+  # Multiple DELETE
+  delete '/api/v1/categories/multiple_destroy' do
+    with_options scope: :category, with_example: true do
+      parameter :ids, 'Идентификаторы категорий', type: :array, required: true
+    end
+
+    let(:ids) do
+      3.times { create :category }
+      Category.ids
+    end
+
+    let(:raw_post) { params.to_json }
+
+    example_request 'Multiple DELETE' do
+      expect(status).to eq(204)
+    end
+  end
 end
