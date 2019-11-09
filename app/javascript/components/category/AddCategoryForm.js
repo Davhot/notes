@@ -44,7 +44,6 @@ class AddCategoryForm extends React.Component {
       name,
       color
     }
-    console.log(data);
     this.props.createCategoryRequest(data);
     this.getTitle.value = '';
     this.props.setMode('show');
@@ -65,7 +64,7 @@ class AddCategoryForm extends React.Component {
             onChangeComplete={ this.getColor }
             width="300px" />
         </div>
-        <input type="submit" className="category-button" value="Submit"/>
+        <input type="submit" className="form-button" value="Submit"/>
       </form>
     )
   }

@@ -7,17 +7,6 @@ import CategoryAppBody from "./CategoryAppBody"
 import Footer from "../Footer"
 import { getCategoriesSuccess } from "./CategoryActions"
 
-// TODO:
-// Сделать работающее приложение
-// 1. Создание заметки
-// 2. Отображение заметки
-// 3. Удаление заметок
-// 4. Редактирование категории
-// 5. Редактирование заметки
-// 6. Кнопка количества блоков на странице
-// 7. Пагинация
-// 8. безопасность апишки по токену
-
 function getCategoriesRequest() {
   return dispatch => {
     return fetch('api/v1/categories', {
@@ -37,7 +26,6 @@ function getCategoriesRequest() {
 class CategoryApp extends React.Component {
   render () {
     this.props.getCategoriesRequest();
-    const { mode } = this.props;
     return (
       <React.Fragment>
         <CategoryAppNav/>

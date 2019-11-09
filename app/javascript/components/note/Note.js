@@ -2,17 +2,17 @@ import React from "react";
 import { connect } from "react-redux";
 
 import images from '../images';
-import AddCategoryForm from './AddCategoryForm'
-import { setMode, selectCategories } from "./CategoryActions"
+import AddNoteForm from './AddNoteForm'
+import { setMode, selectCategories } from "./NoteActions"
 
-class Category extends React.Component {
+class Note extends React.Component {
   redirect_to_notes() {
     if (this.props.mode == 'show') {
-      window.location.href = `categories/${this.props.category.id}/notes`
+      window.location.href = `notes/${this.props.note.id}/notes`
     } else {
-      this.props.selectCategories([this.props.category.id]);
-      let count_selected_categories = this.props.categories.filter(function(category) { return category.selected });
-      if(count_selected_categories.length == 0) {
+      this.props.selectCategories([this.props.note.id]);
+      let count_selected_notes = this.props.notes.filter(function(note) { return note.selected });
+      if(count_selected_notes.length == 0) {
         this.props.setMode('show');
       }
     }
@@ -32,24 +32,19 @@ class Category extends React.Component {
   }
 
   render () {
-    let category_class = "card noselect";
-    if (this.props.category.selected) { category_class += " checked" }
+    let note_class = "card noselect";
+    if (this.props.note.selected) { note_class += " checked" }
     return (
-      <div className={category_class}
-           style={{background: this.props.category.color}}
+      <div className={note_class}
            onMouseUp={() => this.long_press_card_mouseup()}
            onMouseDown={() => this.long_press_card_mousedown()}
            onClick={() => this.redirect_to_notes()}>
-        <p>{this.props.category.name}</p>
+        <p>{this.props.note.body}</p>
       </div>
     )
   }
 }
 
-function mapStateToProps(state) {
-  return state
-}
-
 const mapDispatchToProps = { setMode, selectCategories }; // выносим методы отдельно от компонента
 
-export default connect(mapStateToProps, mapDispatchToProps)(Category);
+export default connect(null, mapDispatchToProps)(Note);

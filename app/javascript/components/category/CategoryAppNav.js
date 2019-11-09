@@ -7,7 +7,6 @@ import Nav from "../Nav"
 import { setMode, selectCategories, deleteCategoriesSuccess } from "./CategoryActions"
 
 function deleteCategoriesRequest(category_ids) {
-  console.log(category_ids);
   return dispatch => {
     return fetch('api/v1/categories/multiple_destroy', {
       method: 'DELETE', // *GET, POST, PUT, DELETE, etc.

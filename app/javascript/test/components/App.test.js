@@ -29,7 +29,7 @@ describe('App', () => {
   });
   it('should render NoteApp', () => {
     const history = createBrowserHistory();
-    history.push('/notes');
+    history.push('/categories/1/notes');
     const wrapper = mount(
       <Router history={history}>
         <App/>

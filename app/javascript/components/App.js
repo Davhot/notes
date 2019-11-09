@@ -16,8 +16,8 @@ class App extends React.Component {
       <Provider store={store}>
         <BrowserRouter>
           <Switch>
-            <Route exact path="/" render={() => <CategoryApp/>} />
-            <Route exact path="/notes" render={() => <NoteApp/>} />
+            <Route exact path="/" component={CategoryApp} />
+            <Route exact path="/categories/:number/notes" component={NoteApp} />
             // TODO: 404/422/500
           </Switch>
         </BrowserRouter>

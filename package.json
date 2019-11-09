@@ -48,7 +48,8 @@
   },
   "jest": {
     "roots": [
-      "app/javascript/test"
+      "app/javascript/test",
+      "app/javascript/reducers"
     ],
     "moduleNameMapper": {
       "\\.(jpg|svg)$": "<rootDir>/app/javascript/components/images.js",
