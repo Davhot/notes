@@ -8,11 +8,21 @@ class CategoryAppBody extends React.Component {
   render () {
     const mode = this.props.mode;
     if (mode == 'show' || mode == 'delete') {
-      return (
-        <div className="container">
-          {this.props.categories.map((category) => <Category key={category.id} category={category} />)}
-        </div>
-      )
+      if (this.props.categories.length > 1) {
+        return (
+          <div className="container">
+            {this.props.categories.map((category) => <Category key={category.id} category={category} />)}
+          </div>
+        )
+      } else {
+        return (
+          <div className="container">
+            <div>
+              <p>Нет категорий.</p>
+            </div>
+          </div>
+        )
+      }
     } else {
       return (
         <div className="container">

@@ -14,11 +14,21 @@ class NoteAppBody extends React.Component {
   render () {
     const mode = this.props.mode;
     if (mode == 'show' || mode == 'delete') {
-      return (
-        <div className="container">
-          {this.props.notes.map((note) => <Note key={note.id} note={note} />)}
-        </div>
-      )
+      if (this.props.notes.length > 1) {
+        return (
+          <div className="container">
+            {this.props.notes.map((note) => <Note key={note.id} note={note} />)}
+          </div>
+        )
+      } else {
+        return (
+          <div className="container">
+            <div>
+              <p>Нет заметок.</p>
+            </div>
+          </div>
+        )
+      }
     } else {
       return (
         <div className="container">

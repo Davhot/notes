@@ -8,16 +8,6 @@ import Footer from "../Footer"
 import { setCurrentCategoryId, getNotesSuccess } from "./NoteActions"
 import { getCategoriesSuccess } from "../category/CategoryActions"
 
-// TODO:
-// Сделать работающее приложение
-// 1. Отображение заметки
-// 2. Удаление заметок
-// 3. Редактирование категории
-// 4. Редактирование заметки
-// 5. Кнопка количества блоков на странице
-// 6. Пагинация
-// 7. безопасность апишки по токену
-
 function getCategoriesRequest() {
   return dispatch => {
     return fetch('/api/v1/categories', {

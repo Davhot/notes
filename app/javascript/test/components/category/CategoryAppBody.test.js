@@ -27,5 +27,3 @@ describe('CategoryAppBody', () => {
     expect(wrapper_edit.find(AddCategoryForm).length).toBe(1);
   });
 });
-
-// TODO: добавить тест, что отображаются категории

@@ -32,14 +32,14 @@ class Note extends React.Component {
   }
 
   render () {
-    let note_class = "card noselect";
+    let note_class = "note-card card noselect";
     if (this.props.note.selected) { note_class += " checked" }
     return (
       <div className={note_class}
            onMouseUp={() => this.long_press_card_mouseup()}
            onMouseDown={() => this.long_press_card_mousedown()}
            onClick={() => this.redirect_to_notes()}>
-        <p>{this.props.note.body}</p>
+        <p className="notes-content">{this.props.note.body}</p>
       </div>
     )
   }
