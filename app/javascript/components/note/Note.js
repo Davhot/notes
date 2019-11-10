@@ -3,12 +3,13 @@ import { connect } from "react-redux";
 
 import images from '../images';
 import AddNoteForm from './AddNoteForm'
-import { setMode, selectNotes } from "./NoteActions"
+import { setMode, selectNotes, setCurrentNoteId } from "./NoteActions"
 
 class Note extends React.Component {
   redirect_to_notes() {
     if (this.props.mode == 'index') {
-      window.location.href = `notes/${this.props.note.id}/notes`
+      this.props.setMode('show');
+      this.props.setCurrentNoteId(this.props.note.id);
     } else {
       this.props.selectNotes([this.props.note.id]);
       let count_selected_notes = this.props.notes.filter(function(note) { return note.selected });
@@ -49,6 +50,6 @@ function mapStateToProps(state) {
   return state
 }
 
-const mapDispatchToProps = { setMode, selectNotes }; // выносим методы отдельно от компонента
+const mapDispatchToProps = { setMode, selectNotes, setCurrentNoteId }; // выносим методы отдельно от компонента
 
 export default connect(mapStateToProps, mapDispatchToProps)(Note);

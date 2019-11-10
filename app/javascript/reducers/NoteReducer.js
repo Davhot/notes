@@ -36,6 +36,8 @@ export function note_reducer(state, action) {
       return { ...state, notes: notes }
     case "SET_CURRENT_CATEGORY_ID":
       return {...state, current_category_id: action.current_category_id };
+    case "SET_CURRENT_NOTE_ID":
+      return {...state, current_note_id: action.current_note_id }
   }
   return null;
 };

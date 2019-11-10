@@ -7,10 +7,6 @@ import Note from './Note'
 import AddNoteForm from './AddNoteForm'
 
 class NoteAppBody extends React.Component {
-  redirect_to_notes() {
-    window.location.href = '/notes'
-  }
-
   render () {
     const mode = this.props.mode;
     if (mode == 'index' || mode == 'delete') {
@@ -29,10 +25,20 @@ class NoteAppBody extends React.Component {
           </div>
         )
       }
-    } else {
+    } else if (mode == 'new') {
       return (
         <div className="container">
           <AddNoteForm/>
+        </div>
+      )
+    } else if (mode == 'show') {
+      const { current_note_id, notes } = this.props
+      const note_body = notes.filter(function(note) { return note.id == current_note_id })[0].body;
+      return (
+        <div className="container">
+          <div className="note-body">
+            <p>{note_body}</p>
+          </div>
         </div>
       )
     }
@@ -42,7 +48,8 @@ class NoteAppBody extends React.Component {
 const mapStateToProps = (state) => {
   return {
     mode: state.mode,
-    notes: state.notes
+    notes: state.notes,
+    current_note_id: state.current_note_id
   }
 }
 

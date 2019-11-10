@@ -44,3 +44,12 @@ export function setCurrentCategoryId(current_category_id) {
     });
   };
 }
+
+export function setCurrentNoteId(current_note_id) {
+  return dispatch => {
+    return dispatch({
+      type: 'SET_CURRENT_NOTE_ID',
+      current_note_id: current_note_id
+    });
+  };
+}

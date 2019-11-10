@@ -8,7 +8,8 @@ const initialState = {
   categories: [],
   notes: [],
   mode: 'index',
-  current_category_id: null
+  current_category_id: null,
+  current_note_id: null
 };
 
 function rootReducer(state, action) {
