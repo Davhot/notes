@@ -3,7 +3,7 @@ function deepCloneOfNestedObject(nestedObject) {
 }
 
 export function note_reducer(state, action) {
-  let notes, note;
+  let notes, current_note;
 
   switch (action.type) {
     case "GET_NOTES_SUCCESS":
@@ -14,14 +14,21 @@ export function note_reducer(state, action) {
       });
       return { ...state, notes: notes };
     case "CREATE_NOTE_SUCCESS":
-      note = action.json;
-      note.selected = false;
-      notes = deepCloneOfNestedObject(state.notes.concat([note]));
-      if (state.notes.filter(function(note) { return note.id === note.id }).length > 0){
+      current_note = action.json;
+      if (state.notes.filter(function(note) { return note.id === current_note.id }).length > 0) {
         return null;
-      } else {
-        return {...state, notes: notes };
       }
+      current_note.selected = false;
+      notes = deepCloneOfNestedObject(state.notes.concat([current_note]));
+      return {...state, notes: notes };
+    case "EDIT_NOTE_SUCCESS":
+      current_note = action.json;
+      current_note.selected = false;
+      // удаляем текущие заметки с id = обновлённой заметки
+      notes = state.notes.filter(function(note) { return note.id != current_note.id });
+      // добавляем заметку в общий список
+      notes = deepCloneOfNestedObject(state.notes.concat([current_note]));
+      return {...state, notes: notes };
     case "SELECT_NOTES":
       notes = state.notes;
       notes.map(function(note){

@@ -22,7 +22,7 @@ beforeEach(()=>{
   wrapper = mount(<Provider store={store}><Note note={note}/></Provider>);
 });
 
-describe('AddNoteForm', () => {
+describe('NoteForm', () => {
   it('should render create note form', () => {
     expect(wrapper.find('.card p').text()).toBe(note.body);
   });

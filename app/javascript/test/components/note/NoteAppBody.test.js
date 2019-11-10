@@ -1,6 +1,6 @@
 import React from 'react';
 import NoteAppBody from 'app/javascript/components/note/NoteAppBody';
-import AddNoteForm from 'app/javascript/components/note/AddNoteForm';
+import NoteForm from 'app/javascript/components/note/NoteForm';
 import '../../setupTests';
 import { shallow, mount } from 'enzyme';
 
@@ -23,7 +23,7 @@ describe('NoteAppBody', () => {
 
   store = mockStore({ ...initialState, mode: 'new' });
   const wrapper_new = shallow(<NoteAppBody store={store}/>).dive().dive();
-  it('should render AddNoteForm', () => {
-    expect(wrapper_new.find(AddNoteForm).length).toBe(1);
+  it('should render NoteForm', () => {
+    expect(wrapper_new.find(NoteForm).length).toBe(1);
   });
 });

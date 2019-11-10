@@ -84,7 +84,7 @@ resource 'Notes' do
     let(:raw_post) { params.to_json }
 
     example_request 'UPDATE' do
-      expect(status).to eq(204)
+      expect(status).to eq(200)
     end
   end
 

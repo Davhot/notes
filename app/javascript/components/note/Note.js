@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 
 import images from '../images';
-import AddNoteForm from './AddNoteForm'
+import NoteForm from './NoteForm'
 import { setMode, selectNotes, setCurrentNoteId } from "./NoteActions"
 
 class Note extends React.Component {

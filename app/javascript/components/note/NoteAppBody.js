@@ -4,7 +4,7 @@ import Select from 'react-select';
 import { connect } from "react-redux";
 
 import Note from './Note'
-import AddNoteForm from './AddNoteForm'
+import NoteForm from './NoteForm'
 
 class NoteAppBody extends React.Component {
   render () {
@@ -25,10 +25,10 @@ class NoteAppBody extends React.Component {
           </div>
         )
       }
-    } else if (mode == 'new') {
+    } else if (mode == 'new' || mode == 'edit') {
       return (
         <div className="container">
-          <AddNoteForm/>
+          <NoteForm/>
         </div>
       )
     } else if (mode == 'show') {

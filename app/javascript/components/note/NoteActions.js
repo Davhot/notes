@@ -5,6 +5,13 @@ export function createNoteSuccess(json) {
   };
 };
 
+export function editNoteSuccess(json) {
+  return {
+    type: 'EDIT_NOTE_SUCCESS',
+    json
+  };
+};
+
 export function getNotesSuccess(data) {
   return {
     type: 'GET_NOTES_SUCCESS',

@@ -1,5 +1,5 @@
 import React from 'react';
-import AddNoteForm from 'app/javascript/components/note/AddNoteForm';
+import NoteForm from 'app/javascript/components/note/NoteForm';
 import Select from 'react-select';
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
@@ -12,10 +12,10 @@ let store, wrapper;
 
 beforeEach(()=>{
   store = configureStore();
-  wrapper = mount(<AddNoteForm store={store}/>);
+  wrapper = mount(<NoteForm store={store}/>);
 });
 
-describe('AddNoteForm', () => {
+describe('NoteForm', () => {
   it('should render create note form', () => {
     expect(wrapper.find('form.note-form').length).toBe(1);
     expect(wrapper.find('textarea.note-body-input').length).toBe(1);

@@ -21,7 +21,7 @@ class Api::V1::CategoriesController < Api::V1::BaseController
   def update
     @category.update(category_params)
 
-    head 204
+    render json: @category, status: :ok
   end
 
   def destroy

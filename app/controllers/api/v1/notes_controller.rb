@@ -22,7 +22,7 @@ class Api::V1::NotesController < Api::V1::BaseController
   def update
     @note.update(note_params)
 
-    head 204
+    render json: @note, status: :ok
   end
 
   def destroy

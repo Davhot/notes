@@ -70,13 +70,25 @@ class NoteAppNav extends React.Component {
           <i className="fa fa-times"></i>
           delete
         </button>
-          <button id='add-note-btn' onClick={() => this.props.setMode('new')}>
-            <i className="fa fa-plus"></i>
-            add note
+        <button id='add-note-btn' onClick={() => this.props.setMode('new')}>
+          <i className="fa fa-plus"></i>
+          add note
+        </button>
+        </Nav>
+      )
+    } else if (mode == 'show') {
+      return (
+        <Nav>
+          <button id='add-note-btn' onClick={() => this.props.setMode('edit')}>
+            <i className="fa fa-edit"></i>
+            edit note
+          </button>
+          <button id='cancel-btn' onClick={() => this.props.setMode('index')}>
+            cancel
           </button>
         </Nav>
       )
-    } else {
+    } else if (mode == 'new' || mode == 'edit') {
       return (
         <Nav>
           <button id='cancel-btn' onClick={() => this.props.setMode('index')}>
