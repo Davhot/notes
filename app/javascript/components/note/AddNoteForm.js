@@ -57,7 +57,7 @@ class AddNoteForm extends React.Component {
 
     this.props.createNoteRequest(data);
     this.getBody.value = '';
-    this.props.setMode('show');
+    this.props.setMode('index');
     toaster.notify('Успешно создано!', { duration: 2000, position: 'top-right' });
   }
 

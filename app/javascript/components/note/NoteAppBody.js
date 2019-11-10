@@ -13,7 +13,7 @@ class NoteAppBody extends React.Component {
 
   render () {
     const mode = this.props.mode;
-    if (mode == 'show' || mode == 'delete') {
+    if (mode == 'index' || mode == 'delete') {
       if (this.props.notes.length > 1) {
         return (
           <div className="container">

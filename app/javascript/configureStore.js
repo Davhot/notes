@@ -7,7 +7,7 @@ import { note_reducer } from './reducers/NoteReducer'
 const initialState = {
   categories: [],
   notes: [],
-  mode: 'show',
+  mode: 'index',
   current_category_id: null
 };
 

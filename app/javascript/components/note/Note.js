@@ -7,13 +7,13 @@ import { setMode, selectNotes } from "./NoteActions"
 
 class Note extends React.Component {
   redirect_to_notes() {
-    if (this.props.mode == 'show') {
+    if (this.props.mode == 'index') {
       window.location.href = `notes/${this.props.note.id}/notes`
     } else {
       this.props.selectNotes([this.props.note.id]);
       let count_selected_notes = this.props.notes.filter(function(note) { return note.selected });
       if(count_selected_notes.length == 0) {
-        this.props.setMode('show');
+        this.props.setMode('index');
       }
     }
   }

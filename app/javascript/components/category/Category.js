@@ -7,13 +7,13 @@ import { setMode, selectCategories } from "./CategoryActions"
 
 class Category extends React.Component {
   redirect_to_notes() {
-    if (this.props.mode == 'show') {
+    if (this.props.mode == 'index') {
       window.location.href = `categories/${this.props.category.id}/notes`
     } else {
       this.props.selectCategories([this.props.category.id]);
       let count_selected_categories = this.props.categories.filter(function(category) { return category.selected });
       if(count_selected_categories.length == 0) {
-        this.props.setMode('show');
+        this.props.setMode('index');
       }
     }
   }

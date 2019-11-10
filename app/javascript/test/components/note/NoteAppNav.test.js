@@ -15,7 +15,7 @@ let wrapper;
 
 describe('NoteAppBody', () => {
   it('should render 3 buttons', () => {
-    store = mockStore({ ...initialState, mode: 'show' });
+    store = mockStore({ ...initialState, mode: 'index' });
     wrapper = mount(<NoteAppNav store={store}/>);
 
     expect(wrapper.find('#choose-all-btn').length).toBe(1);
@@ -24,7 +24,7 @@ describe('NoteAppBody', () => {
   });
 
   it('should render cancel button', () => {
-    store = mockStore({ ...initialState, mode: 'edit' });
+    store = mockStore({ ...initialState, mode: 'new' });
     wrapper = mount(<NoteAppNav store={store}/>);
 
     expect(wrapper.find('#cancel-btn').length).toBe(1);

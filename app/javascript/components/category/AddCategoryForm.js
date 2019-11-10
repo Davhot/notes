@@ -46,7 +46,7 @@ class AddCategoryForm extends React.Component {
     }
     this.props.createCategoryRequest(data);
     this.getTitle.value = '';
-    this.props.setMode('show');
+    this.props.setMode('index');
     toaster.notify('Успешно создано!', { duration: 2000, position: 'top-right' });
   }
 

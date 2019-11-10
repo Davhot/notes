@@ -7,7 +7,7 @@ import { connect } from "react-redux";
 class CategoryAppBody extends React.Component {
   render () {
     const mode = this.props.mode;
-    if (mode == 'show' || mode == 'delete') {
+    if (mode == 'index' || mode == 'delete') {
       if (this.props.categories.length > 1) {
         return (
           <div className="container">

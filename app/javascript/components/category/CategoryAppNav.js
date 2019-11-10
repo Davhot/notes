@@ -35,7 +35,7 @@ class CategoryAppNav extends React.Component {
       categories = this.props.categories.filter(function(category) { return !category.selected });
     } else {
       categories = this.props.categories;
-      this.props.setMode('show')
+      this.props.setMode('index')
     }
     category_ids = categories.map(function(category){ return category.id })
     this.props.selectCategories(category_ids);
@@ -59,7 +59,7 @@ class CategoryAppNav extends React.Component {
     let delete_mode_class = "delete-mode-btn";
     if (mode != 'delete') { delete_mode_class += " hidden" }
     let choose_all_btn_icon = this.isChoosenAll() ? "fa fa-check-square" : "fa fa-square";
-    if (mode == 'show' || mode == 'delete') {
+    if (mode == 'index' || mode == 'delete') {
       return (
         <Nav>
           <button id='choose-all-btn' className={delete_mode_class} onClick={this.chooseAllCategories}>
@@ -70,7 +70,7 @@ class CategoryAppNav extends React.Component {
             <i className="fa fa-times"></i>
             delete
           </button>
-          <button id='add-category-btn' onClick={() => this.props.setMode('edit')}>
+          <button id='add-category-btn' onClick={() => this.props.setMode('new')}>
             <i className="fa fa-plus"></i>
             add category
           </button>
@@ -79,7 +79,7 @@ class CategoryAppNav extends React.Component {
     } else {
       return (
         <Nav>
-          <button id='cancel-btn' onClick={() => this.props.setMode('show')}>
+          <button id='cancel-btn' onClick={() => this.props.setMode('index')}>
             cancel
           </button>
         </Nav>

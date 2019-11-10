@@ -35,7 +35,7 @@ class NoteAppNav extends React.Component {
       notes = this.props.notes.filter(function(note) { return !note.selected });
     } else {
       notes = this.props.notes;
-      this.props.setMode('show')
+      this.props.setMode('index')
     }
     note_ids = notes.map(function(note){ return note.id })
     this.props.selectNotes(note_ids);
@@ -59,7 +59,7 @@ class NoteAppNav extends React.Component {
     let delete_mode_class = "delete-mode-btn";
     if (mode != 'delete') { delete_mode_class += " hidden" }
     let choose_all_btn_icon = this.isChoosenAll() ? "fa fa-check-square" : "fa fa-square";
-    if (mode == 'show' || mode == 'delete') {
+    if (mode == 'index' || mode == 'delete') {
       return (
         <Nav>
         <button id='choose-all-btn' className={delete_mode_class} onClick={this.chooseAllNotes}>
@@ -70,7 +70,7 @@ class NoteAppNav extends React.Component {
           <i className="fa fa-times"></i>
           delete
         </button>
-          <button id='add-note-btn' onClick={() => this.props.setMode('edit')}>
+          <button id='add-note-btn' onClick={() => this.props.setMode('new')}>
             <i className="fa fa-plus"></i>
             add note
           </button>
@@ -79,7 +79,7 @@ class NoteAppNav extends React.Component {
     } else {
       return (
         <Nav>
-          <button id='cancel-btn' onClick={() => this.props.setMode('show')}>
+          <button id='cancel-btn' onClick={() => this.props.setMode('index')}>
             cancel
           </button>
         </Nav>

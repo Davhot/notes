@@ -15,15 +15,15 @@ const mockStore = configureMockStore(middlewares);
 let store = mockStore(initialState);
 
 describe('CategoryAppBody', () => {
-  store = mockStore({ ...initialState, mode: 'show' });
-  const wrapper_show = mount(<CategoryAppBody store={store}/>);
+  store = mockStore({ ...initialState, mode: 'index' });
+  const wrapper_index = mount(<CategoryAppBody store={store}/>);
   it('should render .container', () => {
-    expect(wrapper_show.find('.container').length).toBe(1);
+    expect(wrapper_index.find('.container').length).toBe(1);
   });
 
-  store = mockStore({ ...initialState, mode: 'edit' });
-  const wrapper_edit = shallow(<CategoryAppBody store={store}/>).dive().dive();
+  store = mockStore({ ...initialState, mode: 'new' });
+  const wrapper_new = shallow(<CategoryAppBody store={store}/>).dive().dive();
   it('should render AddCategoryForm', () => {
-    expect(wrapper_edit.find(AddCategoryForm).length).toBe(1);
+    expect(wrapper_new.find(AddCategoryForm).length).toBe(1);
   });
 });
