@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   root 'static#index'
   namespace :api, constraints: { format: 'json' } do
     namespace :v1 do
+      delete 'notes/multiple_destroy', to: 'notes#multiple_destroy'
       resources :categories, shallow: true, except: %w[new edit] do
         collection do
           delete :multiple_destroy

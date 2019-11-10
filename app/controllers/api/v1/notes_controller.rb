@@ -31,6 +31,13 @@ class Api::V1::NotesController < Api::V1::BaseController
     head 204
   end
 
+  def multiple_destroy
+    @notes = Note.where(id: params.require(:note).permit(ids: [])[:ids])
+    @notes.delete_all
+
+    head 204
+  end
+
   private
 
   def note_params

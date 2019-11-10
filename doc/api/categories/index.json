@@ -41,7 +41,7 @@
       "request_content_type": "application/json",
       "response_status": 200,
       "response_status_text": "OK",
-      "response_body": "{\n  \"data\": [\n    {\n      \"id\": 1,\n      \"name\": \"New category 1\",\n      \"color\": \"#ffffff\"\n    },\n    {\n      \"id\": 2,\n      \"name\": \"New category 2\",\n      \"color\": \"#ffffff\"\n    }\n  ]\n}",
+      "response_body": "{\n  \"data\": [\n    {\n      \"id\": 2,\n      \"name\": \"New category 2\",\n      \"color\": \"#ffffff\"\n    },\n    {\n      \"id\": 1,\n      \"name\": \"New category 1\",\n      \"color\": \"#ffffff\"\n    }\n  ]\n}",
       "response_headers": {
         "X-Frame-Options": "SAMEORIGIN",
         "X-XSS-Protection": "1; mode=block",
@@ -50,10 +50,10 @@
         "X-Permitted-Cross-Domain-Policies": "none",
         "Referrer-Policy": "strict-origin-when-cross-origin",
         "Content-Type": "application/json; charset=utf-8",
-        "ETag": "W/\"b1a64c76d0c16f79c52aa94b1586f864\"",
+        "ETag": "W/\"9ce531a2df70d8477af01b9d96fae0b2\"",
         "Cache-Control": "max-age=0, private, must-revalidate",
-        "X-Request-Id": "6e456cb8-84f5-4bd9-b4a4-49976b4a6d4f",
-        "X-Runtime": "0.016592",
+        "X-Request-Id": "9da654ff-9a8c-4cca-a617-106735d47dcd",
+        "X-Runtime": "0.012887",
         "Content-Length": "112"
       },
       "response_content_type": "application/json; charset=utf-8",

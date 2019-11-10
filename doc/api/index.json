@@ -74,6 +74,13 @@
           "method": "get"
         },
         {
+          "description": "Multiple DELETE",
+          "link": "notes/multiple_delete.json",
+          "groups": "all",
+          "route": "/api/v1/notes/multiple_destroy",
+          "method": "delete"
+        },
+        {
           "description": "SHOW",
           "link": "notes/show.json",
           "groups": "all",

@@ -96,4 +96,22 @@ resource 'Notes' do
       expect(status).to eq(204)
     end
   end
+
+  # Multiple DELETE
+  delete '/api/v1/notes/multiple_destroy' do
+    with_options scope: :note, with_example: true do
+      parameter :ids, 'Идентификаторы заметок', type: :array, required: true
+    end
+
+    let(:ids) do
+      3.times { create :note }
+      Note.ids
+    end
+
+    let(:raw_post) { params.to_json }
+
+    example_request 'Multiple DELETE' do
+      expect(status).to eq(204)
+    end
+  end
 end

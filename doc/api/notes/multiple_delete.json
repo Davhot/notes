@@ -1,26 +1,18 @@
 {
   "resource": "Notes",
   "resource_explanation": "Категории",
-  "http_method": "PUT",
-  "route": "/api/v1/notes/:id",
-  "description": "UPDATE",
+  "http_method": "DELETE",
+  "route": "/api/v1/notes/multiple_destroy",
+  "description": "Multiple DELETE",
   "explanation": null,
   "parameters": [
     {
       "scope": "note",
       "with_example": true,
-      "type": "string",
+      "type": "array",
       "required": true,
-      "name": "body",
-      "description": "Тело заметки"
-    },
-    {
-      "scope": "note",
-      "with_example": true,
-      "type": "string",
-      "required": true,
-      "name": "category_id",
-      "description": "id категории"
+      "name": "ids",
+      "description": "Идентификаторы заметок"
     }
   ],
   "response_fields": [
@@ -28,9 +20,9 @@
   ],
   "requests": [
     {
-      "request_method": "PUT",
-      "request_path": "/api/v1/notes/1",
-      "request_body": "{\"note\":{\"body\":\"Note 1\",\"category_id\":2}}",
+      "request_method": "DELETE",
+      "request_path": "/api/v1/notes/multiple_destroy",
+      "request_body": "{\"note\":{\"ids\":[1,2,3]}}",
       "request_headers": {
         "Accept": "application/json",
         "Content-Type": "application/json",
@@ -51,8 +43,8 @@
         "X-Permitted-Cross-Domain-Policies": "none",
         "Referrer-Policy": "strict-origin-when-cross-origin",
         "Cache-Control": "no-cache",
-        "X-Request-Id": "f5ccf223-b354-42ba-9d9d-58816f27efcf",
-        "X-Runtime": "0.006132"
+        "X-Request-Id": "c7176b05-589e-4827-9a3d-d1595d58d1b3",
+        "X-Runtime": "0.003747"
       },
       "response_content_type": null,
       "curl": null

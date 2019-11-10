@@ -99,4 +99,22 @@ RSpec.describe Api::V1::NotesController, type: :controller do
       expect(Note.count).to eq(0)
     end
   end
+
+  describe 'Delete #multiple_destroy' do
+    let(:ids) do
+      3.times { create :note }
+      Note.ids
+    end
+
+    it 'render status 200' do
+      delete :multiple_destroy, params: { note: { ids: [note.id] } }
+      expect(response).to have_http_status(:success)
+    end
+
+    it 'check multiple_destroy notes' do
+      delete :multiple_destroy, params: { note: { ids: ids } }
+
+      expect(Note.count).to eq(0)
+    end
+  end
 end
