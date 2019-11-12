@@ -10,6 +10,6 @@ let store = configureStore();
 describe('Footer', () => {
   const wrapper = mount(<Footer store={store}/>);
   it('should render #change-block-btn-wrapper', () => {
-    expect(wrapper.find('#change-block-btn-wrapper').length).toBe(1);
+    expect(wrapper.find('footer').length).toBe(1);
   });
 });
