@@ -59,44 +59,49 @@ class NoteAppNav extends React.Component {
     let delete_mode_class = "delete-mode-btn";
     if (mode != 'delete') { delete_mode_class += " hidden" }
     let choose_all_btn_icon = this.isChoosenAll() ? "fa fa-check-square" : "fa fa-square";
-    if (mode == 'index' || mode == 'delete') {
-      return (
-        <Nav>
-        <button id='choose-all-btn' className={delete_mode_class} onClick={this.chooseAllNotes}>
+    let buttons = {
+      index: [
+        <button key='1' id='choose-all-btn' className={delete_mode_class} onClick={this.chooseAllNotes}>
           <i className={choose_all_btn_icon}></i>
           choose all
-        </button>
-        <button id='delete-btn' className={delete_mode_class} onClick={this.deleteNotes}>
+        </button>,
+        <button key='2' id='delete-btn' className={delete_mode_class} onClick={this.deleteNotes}>
           <i className="fa fa-times"></i>
           delete
-        </button>
-        <button id='add-note-btn' onClick={() => this.props.setMode('new')}>
+        </button>,
+        <button key='3' id='add-note-btn' onClick={() => this.props.setMode('editCategory')}>
+          <i className="fa fa-edit"></i>
+          edit category
+        </button>,
+        <button key='4' id='add-note-btn' onClick={() => this.props.setMode('new')}>
           <i className="fa fa-plus"></i>
           add note
         </button>
-        </Nav>
-      )
-    } else if (mode == 'show') {
-      return (
-        <Nav>
-          <button id='add-note-btn' onClick={() => this.props.setMode('edit')}>
-            <i className="fa fa-edit"></i>
-            edit note
-          </button>
-          <button id='cancel-btn' onClick={() => this.props.setMode('index')}>
-            cancel
-          </button>
-        </Nav>
-      )
-    } else if (mode == 'new' || mode == 'edit') {
-      return (
-        <Nav>
-          <button id='cancel-btn' onClick={() => this.props.setMode('index')}>
-            cancel
-          </button>
-        </Nav>
-      )
-    }
+      ],
+      show: [
+        <button key='1' id='add-note-btn' onClick={() => this.props.setMode('edit')}>
+          <i className="fa fa-edit"></i>
+          edit note
+        </button>,
+        <button key='2' id='cancel-btn' onClick={() => this.props.setMode('index')}>
+          cancel
+        </button>
+      ],
+      new: [
+        <button key='1' id='cancel-btn' onClick={() => this.props.setMode('index')}>
+          cancel
+        </button>
+      ]
+    };
+    buttons.delete = buttons.index;
+    buttons.edit = buttons.new;
+    buttons.editCategory = buttons.new;
+
+    return (
+      <Nav>
+        {buttons[mode]}
+      </Nav>
+    )
   }
 }
 

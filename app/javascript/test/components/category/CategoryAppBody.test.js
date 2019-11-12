@@ -1,6 +1,6 @@
 import React from 'react';
 import CategoryAppBody from 'app/javascript/components/category/CategoryAppBody';
-import AddCategoryForm from 'app/javascript/components/category/AddCategoryForm';
+import CategoryForm from 'app/javascript/components/category/CategoryForm';
 import '../../setupTests';
 import { shallow, mount } from 'enzyme';
 
@@ -23,7 +23,7 @@ describe('CategoryAppBody', () => {
 
   store = mockStore({ ...initialState, mode: 'new' });
   const wrapper_new = shallow(<CategoryAppBody store={store}/>).dive().dive();
-  it('should render AddCategoryForm', () => {
-    expect(wrapper_new.find(AddCategoryForm).length).toBe(1);
+  it('should render CategoryForm', () => {
+    expect(wrapper_new.find(CategoryForm).length).toBe(1);
   });
 });

@@ -20,7 +20,7 @@ describe('NoteAppBody', () => {
 
     expect(wrapper.find('#choose-all-btn').length).toBe(1);
     expect(wrapper.find('#delete-btn').length).toBe(1);
-    expect(wrapper.find('#add-note-btn').length).toBe(1);
+    expect(wrapper.find('#add-note-btn').length).toBe(2);
   });
 
   it('should render cancel button', () => {

@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 
 import images from '../images';
-import AddCategoryForm from './AddCategoryForm'
+import CategoryForm from './CategoryForm'
 import { setMode, selectCategories } from "./CategoryActions"
 
 class Category extends React.Component {

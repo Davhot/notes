@@ -5,6 +5,13 @@ export function createCategorySuccess(json) {
   };
 };
 
+export function editCategorySuccess(json) {
+  return {
+    type: 'EDIT_CATEGORY_SUCCESS',
+    json
+  };
+};
+
 export function getCategoriesSuccess(data) {
   return {
     type: 'GET_CATEGORIES_SUCCESS',

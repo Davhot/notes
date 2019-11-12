@@ -6,7 +6,7 @@ class Api::V1::NotesController < Api::V1::BaseController
   before_action :find_category, only: %i[index create]
 
   def index
-    @notes = @category.notes
+    @notes = @category.notes.order(created_at: :desc)
     render 'index.json', status: :ok
   end
 

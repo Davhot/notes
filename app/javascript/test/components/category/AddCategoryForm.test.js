@@ -1,5 +1,5 @@
 import React from 'react';
-import AddCategoryForm from 'app/javascript/components/category/AddCategoryForm';
+import CategoryForm from 'app/javascript/components/category/CategoryForm';
 import { SketchPicker } from 'react-color'
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
@@ -12,10 +12,10 @@ let store, wrapper;
 
 beforeEach(()=>{
   store = configureStore();
-  wrapper = mount(<AddCategoryForm store={store}/>);
+  wrapper = mount(<CategoryForm store={store}/>);
 });
 
-describe('AddCategoryForm', () => {
+describe('CategoryForm', () => {
   it('should render create category form', () => {
     expect(wrapper.find('form.category-form').length).toBe(1);
     expect(wrapper.find('input.category-body-input').length).toBe(1);

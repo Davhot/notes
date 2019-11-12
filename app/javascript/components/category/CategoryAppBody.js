@@ -1,6 +1,6 @@
 import React from "react";
 import images from '../images';
-import AddCategoryForm from './AddCategoryForm'
+import CategoryForm from './CategoryForm'
 import Category from './Category'
 import { connect } from "react-redux";
 
@@ -26,7 +26,7 @@ class CategoryAppBody extends React.Component {
     } else {
       return (
         <div className="container">
-          <AddCategoryForm/>
+          <CategoryForm/>
         </div>
       )
     }

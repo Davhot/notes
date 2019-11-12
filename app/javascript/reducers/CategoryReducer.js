@@ -17,6 +17,12 @@ export function category_reducer(state, action) {
       category = action.json;
       category.selected = false;
       return {...state, categories: state.categories.concat([category]) };
+    case "EDIT_CATEGORY_SUCCESS":
+      category = action.json;
+      category.selected = false;
+      categories = state.categories.filter(function(current_category) { return category.id != current_category.id });
+      categories = deepCloneOfNestedObject(categories.concat([category]));
+      return {...state, categories: categories };
     case "SET_MODE":
       return { ...state, mode: action.mode }
     case "SELECT_CATEGORIES":

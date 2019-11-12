@@ -22,7 +22,7 @@ beforeEach(()=>{
   wrapper = mount(<Provider store={store}><Category category={category}/></Provider>);
 });
 
-describe('AddCategoryForm', () => {
+describe('CategoryForm', () => {
   it('should render create category form', () => {
     expect(wrapper.find('.card p').text()).toBe(category.name);
   });
