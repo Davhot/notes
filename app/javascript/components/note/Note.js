@@ -8,7 +8,7 @@ import { setMode, selectNotes, setCurrentNoteId } from "./NoteActions"
 class Note extends React.Component {
   redirect_to_notes() {
     if (this.props.mode == 'index') {
-      this.props.setMode('show');
+      this.props.setMode('edit');
       this.props.setCurrentNoteId(this.props.note.id);
     } else {
       this.props.selectNotes([this.props.note.id]);

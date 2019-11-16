@@ -78,15 +78,6 @@ class NoteAppNav extends React.Component {
           add note
         </button>
       ],
-      show: [
-        <button key='1' id='add-note-btn' onClick={() => this.props.setMode('edit')}>
-          <i className="fa fa-edit"></i>
-          edit note
-        </button>,
-        <button key='2' id='cancel-btn' onClick={() => this.props.setMode('index')}>
-          cancel
-        </button>
-      ],
       new: [
         <button key='1' id='cancel-btn' onClick={() => this.props.setMode('index')}>
           cancel

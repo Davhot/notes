@@ -11,17 +11,9 @@ class NoteAppBody extends React.Component {
   render () {
     const mode = this.props.mode;
     const { current_note_id, notes } = this.props;
-    let note_body;
-    if (notes.length > 0 && current_note_id){
-      note_body = notes.filter(function(note) { return note.id == current_note_id })[0].body;
-    }
     let body = {
-      index: (this.props.notes.length > 1 ? this.props.notes.map((note) => <Note key={note.id} note={note} />) : 'Нет заметок.'),
+      index: (this.props.notes.length > 0 ? this.props.notes.map((note) => <Note key={note.id} note={note} />) : 'Нет заметок.'),
       new: <NoteForm/>,
-      show:
-        <div className="note-body">
-          <p>{note_body}</p>
-        </div>,
       editCategory: <CategoryForm/>
     }
     body.delete = body.index;
