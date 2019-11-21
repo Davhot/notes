@@ -12,7 +12,7 @@ resource 'Categories' do
   header 'Accept', 'application/json'
   header 'Content-Type', 'application/json'
 
-  let(:category) { create :category }
+  let(:category) { create :category, user_id: User.first.id }
 
   # INDEX
   get '/api/v1/categories' do
@@ -58,7 +58,7 @@ resource 'Categories' do
       explanation 'First, create an category, then make a later request to get it back'
 
       category = JSON.parse(response_body)
-      expect(category.except('id', 'created_at', 'updated_at')).to eq(
+      expect(category.except('id', 'created_at', 'updated_at', 'user_id')).to eq(
         'name' => name,
         'color' => color
       )

@@ -5,12 +5,15 @@ class Api::V1::CategoriesController < Api::V1::BaseController
   before_action :find_category, only: %i[show update destroy]
 
   def index
-    @categories = Category.all.order(created_at: :desc)
+    @categories = Category.where(user: current_user).order(created_at: :desc)
     render 'index.json', status: :ok
   end
 
   def create
-    response = Category.create(category_params)
+    category = Category.new(category_params)
+    category.user = current_user
+    category.save
+    response = category
     render json: response, status: :created
   end
 
@@ -31,7 +34,8 @@ class Api::V1::CategoriesController < Api::V1::BaseController
   end
 
   def multiple_destroy
-    @categories = Category.where(id: params.require(:category).permit(ids: [])[:ids])
+    @categories = Category.where(id: params.require(:category).permit(ids: [])[:ids],
+                                 user: current_user)
     @categories.delete_all
 
     head 204
@@ -40,11 +44,15 @@ class Api::V1::CategoriesController < Api::V1::BaseController
   private
 
   def category_params
-    params.require(:category).permit(:name, :color)
+    params.require(:category).permit(:name, :color, :user_id)
   end
 
   def find_category
     @category = Category.find_by(id: params[:id])
-    render json: { error: :not_found }, status: 404 unless @category
+    check_access_resource
+  end
+
+  def check_access_resource
+    raise ActiveRecord::RecordNotFound unless @category && @category.user == current_user
   end
 end

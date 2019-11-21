@@ -2,7 +2,8 @@
 
 # Модель категорий
 class Category < ApplicationRecord
-  has_many :notes
+  belongs_to :user, required: false
+  has_many :notes, dependent: :destroy
 
   validates :name, :color, presence: true
 end

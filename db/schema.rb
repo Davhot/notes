@@ -10,13 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_14_092130) do
+ActiveRecord::Schema.define(version: 2019_11_21_162706) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
     t.string "color"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_categories_on_user_id"
   end
 
   create_table "jwt_blacklist", force: :cascade do |t|
@@ -26,7 +31,7 @@ ActiveRecord::Schema.define(version: 2019_11_14_092130) do
 
   create_table "notes", force: :cascade do |t|
     t.string "body"
-    t.integer "category_id", null: false
+    t.bigint "category_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["category_id"], name: "index_notes_on_category_id"
@@ -44,5 +49,6 @@ ActiveRecord::Schema.define(version: 2019_11_14_092130) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "categories", "users"
   add_foreign_key "notes", "categories"
 end

@@ -28,3 +28,4 @@ advantages.txt
 .rbenv-vars
 .env
 todo
+/db/schema.rb

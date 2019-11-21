@@ -8,8 +8,10 @@ RSpec.describe Api::V1::NotesController, type: :controller do
   render_views
   include ApiHelper
 
-  let(:category) { create :category }
+  let(:category) { create :category, user_id: User.first.id }
   let(:note) { create :note }
+
+  before(:each) { note.category.update_attribute(:user_id, User.first.id) }
 
   describe 'POST create' do
     it 'render status 201' do
@@ -19,7 +21,9 @@ RSpec.describe Api::V1::NotesController, type: :controller do
 
     it 'check create' do
       post :create, params: { note: { body: 'Заметка 1' }, category_id: category.id }
-      expect(Note.count).to eq(1)
+      data = body.keys
+      expect_fields = %w[id body category_id created_at updated_at]
+      expect(data).to match_array(expect_fields)
     end
   end
 
@@ -56,7 +60,7 @@ RSpec.describe Api::V1::NotesController, type: :controller do
       get :index, params: { category_id: category.id }
 
       data = body['data']
-      expect(data.size).to eq(2)
+      expect(data.size).to eq(3)
     end
 
     it 'check format' do

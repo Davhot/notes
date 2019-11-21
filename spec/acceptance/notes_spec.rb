@@ -13,7 +13,7 @@ resource 'Notes' do
   header 'Content-Type', 'application/json'
 
   let(:note) { create :note }
-  let(:category) { create :category }
+  let(:category) { create :category, user_id: User.first.id }
 
   # INDEX
   get '/api/v1/categories/:category_id/notes' do
@@ -37,7 +37,11 @@ resource 'Notes' do
 
   # SHOW
   get '/api/v1/notes/:id' do
-    let(:id) { note.id }
+    let(:id) do
+      note.category = category
+      note.save
+      note.id
+    end
 
     response_field :id, type: :integer
     response_field :body, 'Тело заметки', type: :string
@@ -80,7 +84,11 @@ resource 'Notes' do
       parameter :category_id, 'id категории', type: :string, required: true
     end
 
-    let(:id) { note.id }
+    let(:id) do
+      note.category = category
+      note.save
+      note.id
+    end
     let(:body) { 'Note 1' }
     let(:category_id) { category.id }
 
@@ -93,7 +101,11 @@ resource 'Notes' do
 
   # DELETE
   delete '/api/v1/notes/:id' do
-    let(:id) { note.id }
+    let(:id) do
+      note.category = category
+      note.save
+      note.id
+    end
 
     example_request 'DELETE' do
       expect(status).to eq(204)

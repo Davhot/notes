@@ -46,10 +46,19 @@ class Api::V1::NotesController < Api::V1::BaseController
 
   def find_category
     @category = Category.find(params[:category_id])
+    check_access_category
   end
 
   def find_note
     @note = Note.find_by(id: params[:id])
-    render json: { error: :not_found }, status: 404 unless @note
+    check_access_note
+  end
+
+  def check_access_category
+    raise ActiveRecord::RecordNotFound unless @category.user == current_user
+  end
+
+  def check_access_note
+    raise ActiveRecord::RecordNotFound unless @note && @note.category.user == current_user
   end
 end

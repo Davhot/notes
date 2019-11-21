@@ -8,7 +8,7 @@ RSpec.describe Api::V1::CategoriesController, type: :controller do
   render_views
   include ApiHelper
 
-  let(:category) { create :category }
+  let(:category) { create(:category, user_id: User.first.id) }
 
   describe 'POST create' do
     it 'render status 200' do
@@ -19,6 +19,7 @@ RSpec.describe Api::V1::CategoriesController, type: :controller do
     it 'check create' do
       post :create, params: { category: { name: 'Категория 1', color: 'white' } }
       expect(Category.count).to eq(1)
+      expect(Category.last.user.present?).to be_present
     end
   end
 
@@ -35,16 +36,27 @@ RSpec.describe Api::V1::CategoriesController, type: :controller do
       expect(data).to match_array(expect_fields)
       expect(data.size).to eq(3)
     end
+
+    it 'render 404 on deny category for user' do
+      new_category1 = create(:category, user_id: create(:user).id)
+      new_category2 = create(:category, user_id: create(:user).id)
+      get :show, params: { id: new_category1.id }
+      expect(response).to have_http_status(404)
+    end
   end
 
   describe 'Get #index' do
+    let(:user) { create(:user) }
+
     it 'render status 200' do
       get :index, format: :json
       expect(response).to have_http_status(:success)
     end
 
-    it 'render all categories' do
-      2.times { create :category }
+    it 'render all categories for user' do
+      2.times { create :category, user_id: User.first.id }
+
+      3.times { create :category, user_id: user.id }
 
       get :index, format: :json
 
@@ -53,7 +65,7 @@ RSpec.describe Api::V1::CategoriesController, type: :controller do
     end
 
     it 'check format' do
-      2.times { create :category }
+      2.times { create :category, user_id: User.first.id }
 
       get :index, format: :json
 
@@ -93,7 +105,7 @@ RSpec.describe Api::V1::CategoriesController, type: :controller do
 
   describe 'Delete #multiple_destroy' do
     let(:ids) do
-      3.times { create :category }
+      3.times { create :category, user_id: User.first.id }
       Category.ids
     end
 
