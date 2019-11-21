@@ -38,9 +38,9 @@ RSpec.describe Api::V1::CategoriesController, type: :controller do
     end
 
     it 'render 404 on deny category for user' do
-      new_category1 = create(:category, user_id: create(:user).id)
-      new_category2 = create(:category, user_id: create(:user).id)
-      get :show, params: { id: new_category1.id }
+      new_category = create(:category, user_id: create(:user).id)
+      create(:category, user_id: create(:user).id)
+      get :show, params: { id: new_category.id }
       expect(response).to have_http_status(404)
     end
   end
