@@ -2,6 +2,7 @@
 
 import React from "react";
 import cookie from 'react-cookies'
+import toaster from 'toasted-notes';
 
 import {
   getCategoriesSuccess,
@@ -16,6 +17,17 @@ function redirect_on_unauthorize(response) {
     location.href = '/login';
   }
   return response;
+}
+
+function show_toaster_message(notify_message) {
+  toaster.notify(notify_message, { duration: 2000, position: 'top-right' });
+}
+
+function set_mode(mode) {
+  return {
+    type: 'SET_MODE',
+    mode: mode
+  }
 }
 
 export function getCategoriesRequest() {
@@ -46,9 +58,11 @@ export function createCategoryRequest(data) {
       redirect: 'follow', // manual, *follow, error
       referrer: 'no-referrer', // no-referrer, *client
       body: JSON.stringify(data)
-    }).then(redirect_on_unauthorize(response))
+    }).then(response => redirect_on_unauthorize(response))
       .then(response => response.json())
       .then(json => dispatch(createCategorySuccess(json)))
+      .then(json => dispatch(set_mode('index')))
+      .then(show_toaster_message('Успешно создано!'))
       .then(error => console.log(error));
   };
 };
@@ -64,9 +78,11 @@ export function editCategoryRequest(data) {
       redirect: 'follow', // manual, *follow, error
       referrer: 'no-referrer', // no-referrer, *client
       body: JSON.stringify(data)
-    }).then(redirect_on_unauthorize(response))
+    }).then(response => redirect_on_unauthorize(response))
       .then(response => response.json())
       .then(json => dispatch(editCategorySuccess(json)))
+      .then(json => dispatch(set_mode('index')))
+      .then(show_toaster_message('Успешно обновлено!'))
       .then(error => console.log(error));
   };
 };
@@ -82,7 +98,7 @@ export function deleteCategoriesRequest(category_ids) {
       redirect: 'follow', // manual, *follow, error
       referrer: 'no-referrer', // no-referrer, *client
       body: JSON.stringify(category_ids)
-    }).then(redirect_on_unauthorize(response))
+    }).then(response => redirect_on_unauthorize(response))
       .then(response => dispatch(deleteCategoriesSuccess()))
       .catch(error => console.log(error));
   }

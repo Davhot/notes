@@ -43,16 +43,12 @@ class NoteForm extends React.Component {
 
     if (mode == 'new') {
       this.props.createNoteRequest(data);
-      notify_message = 'Успешно создано!';
     } else {
       data.note_id = current_note_id;
       this.props.editNoteRequest(data);
-      notify_message = 'Успешно обновлено!';
     }
 
     this.getBody.value = '';
-    this.props.setMode('index');
-    toaster.notify(notify_message, { duration: 2000, position: 'top-right' });
   }
 
   handleChange = (selectedOption) => {

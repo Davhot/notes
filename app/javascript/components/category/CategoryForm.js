@@ -3,7 +3,6 @@ import { SketchPicker } from 'react-color'
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
 import "isomorphic-fetch"
-import toaster from 'toasted-notes';
 
 import { setMode } from "./CategoryActions"
 import { createCategoryRequest, editCategoryRequest } from "./CategoryRequests"
@@ -34,16 +33,12 @@ class CategoryForm extends React.Component {
 
     if (mode == 'new') {
       this.props.createCategoryRequest(data);
-      notify_message = 'Успешно создано!';
     } else {
       data.category_id = current_category_id;
       this.props.editCategoryRequest(data);
-      notify_message = 'Успешно обновлено!';
     }
 
     this.getTitle.value = '';
-    this.props.setMode('index');
-    toaster.notify(notify_message, { duration: 2000, position: 'top-right' });
   }
 
   render () {

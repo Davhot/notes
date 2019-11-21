@@ -15,6 +15,10 @@ export function category_reducer(state, action) {
       return { ...state, categories: categories };
     case "CREATE_CATEGORY_SUCCESS":
       category = action.json;
+      // Не нужно обновлять состояние, если такая запись уже есть
+      if (state.notes.filter(function(current_category) { return current_category.id === category.id }).length > 0) {
+        return null;
+      }
       category.selected = false;
       return {...state, categories: state.categories.concat([category]) };
     case "EDIT_CATEGORY_SUCCESS":

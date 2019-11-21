@@ -2,6 +2,7 @@
 
 import React from "react";
 import cookie from 'react-cookies'
+import toaster from 'toasted-notes';
 
 import {
   getNotesSuccess,
@@ -16,6 +17,17 @@ function redirect_on_unauthorize(response) {
     location.href = '/login';
   }
   return response;
+}
+
+function show_toaster_message(notify_message) {
+  toaster.notify(notify_message, { duration: 2000, position: 'top-right' });
+}
+
+function set_mode(mode) {
+  return {
+    type: 'SET_MODE',
+    mode: mode
+  }
 }
 
 export function getNotesRequest(category_id) {
@@ -49,6 +61,8 @@ export function createNoteRequest(data) {
     }).then(response => redirect_on_unauthorize(response))
       .then(response => response.json())
       .then(json => dispatch(createNoteSuccess(json)))
+      .then(json => dispatch(set_mode('index')))
+      .then(show_toaster_message('Успешно создано!'))
       .then(error => console.log(error));
   };
 };
@@ -67,6 +81,8 @@ export function editNoteRequest(data) {
     }).then(response => redirect_on_unauthorize(response))
       .then(response => response)
       .then(json => dispatch(editNoteSuccess(data)))
+      .then(json => dispatch(set_mode('index')))
+      .then(show_toaster_message('Успешно обновлено!'))
       .then(error => console.log(error));
   };
 };
