@@ -16,6 +16,7 @@
     "prop-types": "^15.7.2",
     "react": "^16.9.0",
     "react-color": "^2.17.3",
+    "react-cookies": "^0.1.1",
     "react-dom": "^16.0.0-beta.2",
     "react-dom-factories": "^1.0.0",
     "react-redux": "^7.1.1",
@@ -55,6 +56,8 @@
       "\\.(jpg|svg)$": "<rootDir>/app/javascript/components/images.js",
       "app/javascript/(.*)": "<rootDir>/app/javascript/$1"
     },
-    "setupFiles": ["jest-canvas-mock"]
+    "setupFiles": [
+      "jest-canvas-mock"
+    ]
   }
 }

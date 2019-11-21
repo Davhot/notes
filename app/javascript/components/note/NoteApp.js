@@ -5,40 +5,9 @@ import { createStructuredSelector } from "reselect";
 import NoteAppNav from "./NoteAppNav"
 import NoteAppBody from "./NoteAppBody"
 import Footer from "../Footer"
-import { setCurrentCategoryId, getNotesSuccess } from "./NoteActions"
-import { getCategoriesSuccess } from "../category/CategoryActions"
-
-function getCategoriesRequest() {
-  return dispatch => {
-    return fetch('/api/v1/categories', {
-      method: 'GET', // *GET, POST, PUT, DELETE, etc.
-      mode: 'cors', // no-cors, cors, *same-origin
-      cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
-      credentials: 'same-origin', // include, *same-origin, omit
-      headers: { 'Content-Type': 'application/json' },
-      redirect: 'follow', // manual, *follow, error
-      referrer: 'no-referrer' // no-referrer, *client
-    }).then(response => response.json())
-      .then(json => dispatch(getCategoriesSuccess(json.data)))
-      .catch(error => console.log(error));
-  }
-};
-
-function getNotesRequest(category_id) {
-  return dispatch => {
-    return fetch(`/api/v1/categories/${category_id}/notes`, {
-      method: 'GET', // *GET, POST, PUT, DELETE, etc.
-      mode: 'cors', // no-cors, cors, *same-origin
-      cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
-      credentials: 'same-origin', // include, *same-origin, omit
-      headers: { 'Content-Type': 'application/json' },
-      redirect: 'follow', // manual, *follow, error
-      referrer: 'no-referrer' // no-referrer, *client
-    }).then(response => response.json())
-      .then(json => dispatch(getNotesSuccess(json.data)))
-      .catch(error => console.log(error));
-  }
-};
+import { setCurrentCategoryId } from "./NoteActions"
+import { getCategoriesRequest } from "../category/CategoryRequests"
+import { getNotesRequest } from "./NoteRequests"
 
 class NoteApp extends React.Component {
   constructor(props) {

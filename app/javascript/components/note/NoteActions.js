@@ -1,3 +1,5 @@
+// Функции для Redux
+
 export function createNoteSuccess(json) {
   return {
     type: 'CREATE_NOTE_SUCCESS',

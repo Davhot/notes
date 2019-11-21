@@ -4,13 +4,11 @@ Rails.application.routes.draw do
   devise_for :users,
              path: '',
              path_names: {
-               sign_in: 'login',
-               sign_out: 'logout',
-               registration: 'signup'
+               sign_in: 'login_api',
+               sign_out: 'logout_api'
              },
              controllers: {
-               sessions: 'sessions',
-               registrations: 'registrations'
+               sessions: 'sessions'
              }
 
   root 'static#index'

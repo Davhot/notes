@@ -4,23 +4,8 @@ import { createStructuredSelector } from "reselect";
 
 import images from '../images';
 import Nav from "../Nav"
-import { setMode, selectNotes, deleteNotesSuccess } from "./NoteActions"
-
-function deleteNotesRequest(note_ids) {
-  return dispatch => {
-    return fetch('/api/v1/notes/multiple_destroy', {
-      method: 'DELETE', // *GET, POST, PUT, DELETE, etc.
-      mode: 'cors', // no-cors, cors, *same-origin
-      cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
-      credentials: 'same-origin', // include, *same-origin, omit
-      headers: { 'Content-Type': 'application/json' },
-      redirect: 'follow', // manual, *follow, error
-      referrer: 'no-referrer', // no-referrer, *client
-      body: JSON.stringify(note_ids)
-    }).then(response => dispatch(deleteNotesSuccess()))
-      .catch(error => console.log(error));
-  }
-};
+import { setMode, selectNotes } from "./NoteActions"
+import { deleteNotesRequest } from "./NoteRequests"
 
 class NoteAppNav extends React.Component {
   constructor(props) {
@@ -54,6 +39,10 @@ class NoteAppNav extends React.Component {
     this.props.deleteNotesRequest(note_ids);
   }
 
+  render_root_page() {
+    location.href = '/'
+  }
+
   render () {
     const mode = this.props.mode;
     let delete_mode_class = "delete-mode-btn";
@@ -76,6 +65,9 @@ class NoteAppNav extends React.Component {
         <button key='4' id='add-note-btn' onClick={() => this.props.setMode('new')}>
           <i className="fa fa-plus"></i>
           add note
+        </button>,
+        <button key='5' id='add-note-btn' onClick={() => this.render_root_page()}>
+          cancel
         </button>
       ],
       new: [
@@ -102,6 +94,6 @@ const structuredSelector = createStructuredSelector({
   notes: state => state.notes
 });
 
-const mapDispatchToProps = { setMode, selectNotes, deleteNotesRequest, deleteNotesSuccess }; // выносим методы отдельно от компонента
+const mapDispatchToProps = { setMode, selectNotes, deleteNotesRequest }; // выносим методы отдельно от компонента
 
 export default connect(structuredSelector, mapDispatchToProps)(NoteAppNav);

@@ -5,23 +5,7 @@ import { createStructuredSelector } from "reselect";
 import CategoryAppNav from "./CategoryAppNav"
 import CategoryAppBody from "./CategoryAppBody"
 import Footer from "../Footer"
-import { getCategoriesSuccess } from "./CategoryActions"
-
-function getCategoriesRequest() {
-  return dispatch => {
-    return fetch('api/v1/categories', {
-      method: 'GET', // *GET, POST, PUT, DELETE, etc.
-      mode: 'cors', // no-cors, cors, *same-origin
-      cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
-      credentials: 'same-origin', // include, *same-origin, omit
-      headers: { 'Content-Type': 'application/json' },
-      redirect: 'follow', // manual, *follow, error
-      referrer: 'no-referrer' // no-referrer, *client
-    }).then(response => response.json())
-      .then(json => dispatch(getCategoriesSuccess(json.data)))
-      .catch(error => console.log(error));
-  }
-};
+import { getCategoriesRequest } from "./CategoryRequests" 
 
 class CategoryApp extends React.Component {
   render () {

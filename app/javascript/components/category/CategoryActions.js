@@ -1,3 +1,5 @@
+// Функции для Redux
+
 export function createCategorySuccess(json) {
   return {
     type: 'CREATE_CATEGORY_SUCCESS',

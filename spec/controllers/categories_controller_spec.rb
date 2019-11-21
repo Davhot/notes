@@ -3,6 +3,8 @@
 require 'rails_helper'
 
 RSpec.describe Api::V1::CategoriesController, type: :controller do
+  login_user
+
   render_views
   include ApiHelper
 

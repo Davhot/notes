@@ -19,7 +19,13 @@ require 'capybara/rails'
 require 'factory_bot_rails'
 Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
 
+# note: require 'devise' after require 'rspec/rails'
+require 'devise'
+
 RSpec.configure do |config|
+  config.include Devise::Test::ControllerHelpers, type: :controller
+  config.extend ControllerMacros, type: :controller
+
   config.use_transactional_fixtures = false
   config.infer_spec_type_from_file_location!
 

@@ -4,6 +4,9 @@ require 'rails_helper'
 require 'rspec_api_documentation/dsl'
 
 resource 'Notes' do
+  include Devise::Test::IntegrationHelpers
+  before(:each) { sign_in create(:user) }
+
   explanation 'Категории'
 
   header 'Accept', 'application/json'

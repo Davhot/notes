@@ -5,41 +5,8 @@ import { createStructuredSelector } from "reselect";
 import "isomorphic-fetch"
 import toaster from 'toasted-notes';
 
-import { createNoteSuccess, editNoteSuccess, setMode } from "./NoteActions"
-
-function createNoteRequest(data) {
-  return dispatch => {
-    return fetch(`/api/v1/categories/${data.category_id}/notes`, {
-      method: 'POST', // *GET, POST, PUT, DELETE, etc.
-      mode: 'cors', // no-cors, cors, *same-origin
-      cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
-      credentials: 'same-origin', // include, *same-origin, omit
-      headers: { 'Content-Type': 'application/json' },
-      redirect: 'follow', // manual, *follow, error
-      referrer: 'no-referrer', // no-referrer, *client
-      body: JSON.stringify(data)
-    }).then(response => response.json())
-      .then(json => dispatch(createNoteSuccess(json)))
-      .then(error => console.log(error));
-  };
-};
-
-function editNoteRequest(data) {
-  return dispatch => {
-    return fetch(`/api/v1/notes/${data.note_id}`, {
-      method: 'PUT', // *GET, POST, PUT, DELETE, etc.
-      mode: 'cors', // no-cors, cors, *same-origin
-      cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
-      credentials: 'same-origin', // include, *same-origin, omit
-      headers: { 'Content-Type': 'application/json' },
-      redirect: 'follow', // manual, *follow, error
-      referrer: 'no-referrer', // no-referrer, *client
-      body: JSON.stringify(data)
-    }).then(response => response)
-      .then(json => dispatch(editNoteSuccess(data)))
-      .then(error => console.log(error));
-  };
-};
+import { setMode } from "./NoteActions"
+import { createNoteRequest, editNoteRequest } from "./NoteRequests"
 
 class NoteForm extends React.Component {
   constructor(props) {
