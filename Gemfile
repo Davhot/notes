@@ -47,3 +47,9 @@ end
 gem 'apitome'
 gem 'rspec_api_documentation'
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
+
+# Use Capistrano for deployment
+group :capistrano do
+  gem 'capistrano', '3.9.0'
+  gem 'capistrano-docker', git: 'https://github.com/netguru/capistrano-docker.git'
+end
