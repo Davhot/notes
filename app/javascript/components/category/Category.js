@@ -6,6 +6,12 @@ import CategoryForm from './CategoryForm'
 import { setMode, selectCategories } from "./CategoryActions"
 
 class Category extends React.Component {
+  constructor() {
+    super()
+    this.handleButtonPress = this.handleButtonPress.bind(this)
+    this.handleButtonRelease = this.handleButtonRelease.bind(this)
+  }
+
   redirect_to_notes() {
     if (this.props.mode == 'index') {
       window.location.href = `categories/${this.props.category.id}/notes`
@@ -18,17 +24,13 @@ class Category extends React.Component {
     }
   }
 
-  long_press_card_mouseup() {
-    clearTimeout(this.pressTimer);
-    return false;
+  handleButtonPress() {
+    const self = this;
+    this.buttonPressTimer = setTimeout(() => self.props.setMode('delete'), 500);
   }
 
-  long_press_card_mousedown() {
-    const self = this;
-    this.pressTimer = window.setTimeout(function() {
-      self.props.setMode('delete');
-    }, 500);
-    return false;
+  handleButtonRelease () {
+    clearTimeout(this.buttonPressTimer);
   }
 
   render () {
@@ -37,9 +39,12 @@ class Category extends React.Component {
     return (
       <div className={category_class}
            style={{background: this.props.category.color}}
-           onMouseUp={() => this.long_press_card_mouseup()}
-           onMouseDown={() => this.long_press_card_mousedown()}
-           onClick={() => this.redirect_to_notes()}>
+           onClick={() => this.redirect_to_notes()}
+           onTouchStart={this.handleButtonPress}
+           onTouchEnd={this.handleButtonRelease}
+           onMouseDown={this.handleButtonPress}
+           onMouseUp={this.handleButtonRelease}
+           onMouseLeave={this.handleButtonRelease}>
         <p>{this.props.category.name}</p>
       </div>
     )
