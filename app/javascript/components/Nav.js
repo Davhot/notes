@@ -23,7 +23,6 @@ class Nav extends React.Component {
     });
     let notify_message;
     if(response.status != 204) {
-      console.log(response)
       notify_message = "Ошибка!";
     } else {
       this.redirect_to_sign_in();

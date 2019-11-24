@@ -9,7 +9,6 @@ class CategoryAppBody extends React.Component {
   render () {
     const mode = this.props.mode;
     if (mode == 'index' || mode == 'delete') {
-      console.log(this.props.categories)
       if (this.props.categories.length > 0) {
         return (
           <div className="container">
