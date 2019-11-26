@@ -36,7 +36,7 @@ class Api::V1::CategoriesController < Api::V1::BaseController
   def multiple_destroy
     @categories = Category.where(id: params.require(:category).permit(ids: [])[:ids],
                                  user: current_user)
-    @categories.delete_all
+    @categories.destroy_all
 
     head 204
   end
