@@ -2,11 +2,6 @@
   <img src="public/img/rails_react.png" alt="Logo" width="400">
 </p>
 
-## Description
-This project is CRUD **notes** and **categories** application powered by Ruby on Rails and React.
-
-Demo: [notes](https://notes.logdata.me).
-
 ## Major opportunities and advantages:
 * Every user has his own notes and categories;
 * Delete all selected notes or categories with one click;
@@ -18,6 +13,8 @@ It's just React;
 * Pretty backend documentation;
 * Frontend interact with backend safely using token;
 * Frontend and backend have tests guaranteeing code without bugs.
+
+Demo: [notes](https://notes.logdata.me).
 
 <h3 align="center"><b>Categories</b></h3>
 <p align="center">
